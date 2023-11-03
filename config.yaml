@@ -1,0 +1,21 @@
+username: admin
+password: "123456"
+log:
+  level: info
+  filename: test.log
+
+mysql:
+  host: "rm-bp1xqhp60et1lx5z92o.mysql.rds.aliyuncs.com"
+  port: 3306
+  user: "taomama"
+  password: "!qazxsw2"
+  database: "rebate_v3"
+
+redis:
+  host:
+  port: 6379
+  db: 0,
+  password: ""
+
+host: http://test.wareadmin.biyingniao.com
+api_host:  http://test.warehouse.biyingniao.com
