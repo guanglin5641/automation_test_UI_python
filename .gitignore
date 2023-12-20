@@ -1,0 +1,6 @@
+pytest.log
+chromedriver
+.idea
+__pycache__
+reports
+logs
