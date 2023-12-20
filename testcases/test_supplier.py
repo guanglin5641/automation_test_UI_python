@@ -9,8 +9,6 @@ from page.supplier_page import SupplierPage
 import allure
 from common.tool import add_image_attach
 
-import os
-
 
 
 create_data = [
