@@ -11,7 +11,7 @@ from common.tool import add_image_attach
 
 import os
 
-import __main__
+
 
 create_data = [
     {
