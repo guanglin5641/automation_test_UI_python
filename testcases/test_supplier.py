@@ -172,3 +172,4 @@ class TestSupplier(Base):
     #             page.input_remark(supplier["remark"])
     #             page.select_status(supplier["status"])
 
+
