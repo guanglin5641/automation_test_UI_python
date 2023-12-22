@@ -6,7 +6,7 @@ from common.route import SUPPLIER_LIST, SUPPLIER_SAVE
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-
+import json
 
 class SupplierPage(BasePage, SupplierPosition):
     def __init__(self, driver, path=SUPPLIER_LIST):
@@ -25,7 +25,7 @@ class SupplierPage(BasePage, SupplierPosition):
         """
         self.find_element(position_expression=self.list_text_operation()).click()
 
-    def click_add_button(self):
+    def click_add_button(self,data):
         """
         保存
         添加供应商
@@ -36,7 +36,6 @@ class SupplierPage(BasePage, SupplierPosition):
 
         wait = WebDriverWait(self.driver, 5)
         ret = wait.until(
-
             # 任何一个满足条件
             EC.any_of(
                 # EC.url_changes(self.get_url(SUPPLIER_SAVE)),
@@ -45,13 +44,21 @@ class SupplierPage(BasePage, SupplierPosition):
                 ),
                 EC.visibility_of_element_located(
                     (By.XPATH, "//p[@class='el-message__content']")
+
                 ),
             )
         )
-        # 如果页面发生跳转就说明创建供应商成功
+        # 如果页面发生跳转，就说明创建供应商成功
         if isinstance(ret, bool):
-            return "创建成功"
+            # 添加你的额外判断条件
+            # return "创建成功"
+            result = self.is_page_in_expected_state(data)  # 自定义的判断函数
+            if result == "符合预期":
+                return "创建成功"
+            else:
+                return f"页面状态不符合预期: {result}"
         else:
+            print(ret.text)
             return ret.text
 
 
@@ -176,28 +183,56 @@ class SupplierPage(BasePage, SupplierPosition):
         for i in resource_types:
             resource_type_list.append(i.text)
         return name.text,super_type.text,resource_type_list,contact_company.text,contact_information.text,state.text,balance_warning.text,create_time.text,remark.text
-    def page_assertion(self,name,super_type,resource_types,contact_company,contact_information,state,balance_warning,create_time,remark):
+
+    def is_page_in_expected_state(self, data):
         """
         页面断言
         :return:
         """
+        failed_assertions = []
+
         try:
             list = self.get_list_text()
-            assert name == list[0]
-            assert super_type == list[1]
-            assert resource_types == list[2]
-            assert contact_company == list[3]
-            assert contact_information == list[4]
-            assert state == list[5]
-            assert balance_warning == list[6]
-            assert create_time == list[7]
-            assert remark == list[8]
-            return "All assertions passed."
 
+            # 只对在 data 中有值的字段进行断言
+            if 'name' in data and data['name']:
+                if data['name'] != list[0]:
+                    failed_assertions.append(f"Field 'name' is incorrect. Expected: {data['name']}, Actual: {list[0]}")
+            if 'super_type' in data and data['super_type']:
+                if data['super_type'] != list[1]:
+                    failed_assertions.append(
+                        f"Field 'super_type' is incorrect. Expected: {data['super_type']}, Actual: {list[1]}")
+            if 'resource_type' in data and data['resource_type']:
+                if data['resource_type'] != list[2]:
+                    failed_assertions.append(
+                        f"Field 'resource_type' is incorrect. Expected: {data['resource_type']}, Actual: {list[2]}")
+            if 'contact_company' in data and data['contact_company']:
+                if data['contact_company'] != list[3]:
+                    failed_assertions.append(
+                        f"Field 'contact_company' is incorrect. Expected: {data['contact_company']}, Actual: {list[3]}")
+            if 'contact_information' in data and data['contact_information']:
+                if data['contact_information'] != list[4]:
+                    failed_assertions.append(
+                        f"Field 'contact_information' is incorrect. Expected: {data['contact_information']}, Actual: {list[4]}")
+            if 'state' in data and data['state']:
+                if data['state'] != list[5]:
+                    failed_assertions.append(
+                        f"Field 'state' is incorrect. Expected: {data['state']}, Actual: {list[5]}")
+            if 'balance_warning' in data and data['balance_warning']:
+                if data['balance_warning'] != list[6]:
+                    failed_assertions.append(
+                        f"Field 'balance_warning' is incorrect. Expected: {data['balance_warning']}, Actual: {list[6]}")
+            if 'create_time' in data and data['create_time']:
+                if data['create_time'] != list[7]:
+                    failed_assertions.append(
+                        f"Field 'create_time' is incorrect. Expected: {data['create_time']}, Actual: {list[7]}")
+            if 'remark' in data and data['remark']:
+                if data['remark'] != list[8]:
+                    failed_assertions.append(
+                        f"Field 'remark' is incorrect. Expected: {data['remark']}, Actual: {list[8]}")
+            if failed_assertions:
+                return "\n".join(failed_assertions)
+            else:
+                return "符合预期"
         except AssertionError as e:
             return str(e)
-
-
-if __name__ == '__main__':
-
-    print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))

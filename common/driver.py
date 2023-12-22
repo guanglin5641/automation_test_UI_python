@@ -21,7 +21,7 @@ class Driver:
         options.add_argument("--incognito")
 
         # 设置为无头模式
-        # options.add_argument("--headless")
+        options.add_argument("--headless")
 
         # 禁用GPU加速
         options.add_argument("--disable-gpu")
