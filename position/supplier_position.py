@@ -128,3 +128,5 @@ class SupplierPosition(object):
         操作编辑
         '''
         return f'''//tr[@class='el-table__row'][1]//td[@class][8]//span[1]'''
+
+
