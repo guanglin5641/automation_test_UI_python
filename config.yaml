@@ -17,5 +17,5 @@ redis:
   db: 0,
   password: ""
 
-host: http://test.wareadmin.biyingniao.com
-api_host:  http://test.warehouse.biyingniao.com
+host: https://test.wareadmin.biyingniao.com
+api_host:  https://test.warehouse.biyingniao.com

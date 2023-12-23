@@ -16,12 +16,15 @@ class SupplierPosition(object):
         return f"//input[@placeholder='请选择供应商类型']/parent::div"
 
     @classmethod
-    def resource_type(cls, text):
-        d = {"虚拟商品": 1, "实物商品": 2, "CPS": 3, "CPA": 4, "话费": 5}
+    def resource_type(cls, text,all_list):
+        # d = {"虚拟商品": 1, "实物商品": 2, "CPS": 3, "CPA": 4, "话费": 5}
         index = 1
-        if text in d:
-            index = d[text]
+        if text in all_list:
+            index = all_list[text]
         return f"//label[text()='资源类型']/following-sibling::div//label[{index}]"
+    def selected_resource_type(self):
+
+        return f"//div[@class='el-checkbox-group']//label[@class='el-checkbox is-checked']"
 
     @classmethod
     def type_option(cls, type_name):
@@ -72,7 +75,7 @@ class SupplierPosition(object):
         '''
         供应商名称
         '''
-        return f'''/html/body/div[1]/div/section/main/div/div[2]/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[1]/div/p[1]'''
+        return f'''//tr[@class='el-table__row'][1]//td[@class][1]//p[@class='font-semibold']'''
 
     @classmethod
     def list_text_super_type(cls):
@@ -128,3 +131,24 @@ class SupplierPosition(object):
         操作编辑
         '''
         return f'''//tr[@class='el-table__row'][1]//td[@class][8]//span[1]'''
+
+    def save_button(cls):
+        '''
+        操作编辑
+        :return:
+        '''
+        return f"//span[text()='保存']/parent::button"
+    def cancel_button(cls):
+        '''
+        操作编辑
+        :return:
+        '''
+        return f"//span[text()='取消']/parent::button"
+    def serial_number(cls):
+        '''
+        查找编号
+        :return:
+        '''
+        return f"//tr[@class='el-table__row'][1]//p[contains(text(), '编号：')]"
+    def resource_type_lists(cls):
+        return  f"//div[@class='el-checkbox-group']//span[@class='el-checkbox__label']"
