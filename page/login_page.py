@@ -72,9 +72,10 @@ class LoginPage(BasePage, LoginPosition):
         点击登录按钮
         :return:
         """
-        xpath = self.button("登 录")
-        action = ActionChains(self.driver)
-        action.click(self.find_element(position_expression=xpath))
+        # xpath = self.button("登 录")
+        # action = ActionChains(self.driver)
+        # action.click(self.find_element(position_expression=xpath))
+        self.find_element(position_expression=self.button("登 录")).click()
         wait = WebDriverWait(self.driver, 5)
         ret = wait.until(
             # 任何一个满足条件

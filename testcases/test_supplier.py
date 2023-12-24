@@ -5,7 +5,6 @@ import pytest
 from testcases.base import Base
 from page.login_page import LoginPage
 from page.supplier_page import SupplierPage
-
 import allure
 from common.tool import add_image_attach
 
@@ -63,46 +62,80 @@ create_data = [
         "remark": "",
         "expected": "创建成功",
     },
+    {
+        "case_name": "创建供应商余额预警为空",
+        "name": "测试",
+        "type": "1688",
+        "resource_type": ["CPS"],
+        "balance_warning": "",
+        "account": "test-account",
+        "password": "password123",
+        "company_info": {
+            "company": "测试公司",
+            "contact": "测试联系人",
+            "contact_content": "联系方式",
+        },
+        "status": "启用",
+        "remark": "测试备注",
+        "expected": "创建成功",
+    },
+    {
+        "case_name": "创建供应商账号为空",
+        "name": "测试",
+        "type": "1688",
+        "resource_type": ["CPS"],
+        "balance_warning": "20",
+        "account": "",
+        "password": "password123",
+        "company_info": {
+            "company": "测试公司",
+            "contact": "测试联系人",
+            "contact_content": "联系方式",
+        },
+        "status": "启用",
+        "remark": "测试备注",
+        "expected": "创建成功",
+    }
 ]
 
+
 edit_data = [
-    # {
-    #     "case_name": "编辑供应商供应商为空",
-    #     "name": "",
-    #     "type": "1688",
-    #     "resource_type": ["CPA","CPS"],
-    #     "balance_warning": "",
-    #     "account": "",
-    #     "password": "",
-    #     "company_info": {
-    #         "company": "",
-    #         "contact": "",
-    #         "contact_content": "",
-    #     },
-    #     "status": "",
-    #     "remark": "",
-    #     "expected": "请输入供应商名称",
-    # },
-    # {
-    #     "case_name": "编辑供应商供应商为空",
-    #     "name": "修改供应商名称",
-    #     "type": "1688",
-    #     "resource_type": [],
-    #     "balance_warning": "",
-    #     "account": "",
-    #     "password": "",
-    #     "company_info": {
-    #         "company": "",
-    #         "contact": "",
-    #         "contact_content": "",
-    #     },
-    #     "status": "",
-    #     "remark": "",
-    #     "expected": "请选择资源类型",
-    #
-    # },
     {
-        "case_name": "编辑供应商供应商为空",
+        "case_name": "编辑供应商供应商名称为空",
+        "name": "",
+        "type": "1688",
+        "resource_type": ["CPS","CPA"],
+        "balance_warning": "",
+        "account": "",
+        "password": "",
+        "company_info": {
+            "company": "",
+            "contact": "",
+            "contact_content": ""
+        },
+        "status": "",
+        "remark": "",
+        "expected": "请输入供应商名称"
+    },
+    {
+        "case_name": "编辑供应商资源类型为空",
+        "name": "修改供应商名称",
+        "type": "1688",
+        "resource_type": [],
+        "balance_warning": "",
+        "account": "",
+        "password": "",
+        "company_info": {
+            "company": "",
+            "contact": "",
+            "contact_content": ""
+        },
+        "status": "",
+        "remark": "",
+        "expected": "请选择资源类型"
+    },
+    {
+        "case_name": "编辑供应商修改完成",
         "name": "修改供应商名称",
         "type": "1688",
         "resource_type": ["CPS","CPA"],
@@ -112,15 +145,14 @@ edit_data = [
         "company_info": {
             "company": "测试所属公司",
             "contact": "测试联系人",
-            "contact_content": "测试联系状态",
+            "contact_content": "测试联系状态"
         },
         "status": "启用",
         "remark": "测试备注",
-        "expected": "修改完成",
-
-    },
-
+        "expected": "修改完成"
+    }
 ]
+
 
 
 class TestSupplier(Base):
@@ -169,6 +201,7 @@ class TestSupplier(Base):
             page.click_to_edit_page()
         with allure.step("编辑供应商"):
             self.fill_supplier_form(page, supplier)
+            # time.sleep(10)
             with allure.step("点击编辑按钮"):
                 res = page.click_edit_button(supplier,numbers)
             with allure.step("断言"):
