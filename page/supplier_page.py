@@ -8,7 +8,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import re
-
 import json
 
 class SupplierPage(BasePage, SupplierPosition):
@@ -279,6 +278,7 @@ class SupplierPage(BasePage, SupplierPosition):
         for i in resource_types:
             resource_type_list.append(i.text)
         return name.text,super_type.text,resource_type_list,contact_company.text,contact_information.text,state.text,balance_warning.text,create_time.text,remark.text
+
     def is_page_in_expected_state(self, data):
         """
         页面断言
@@ -329,3 +329,5 @@ class SupplierPage(BasePage, SupplierPosition):
                 return "符合预期"
         except AssertionError as e:
             return str(e)
+
+

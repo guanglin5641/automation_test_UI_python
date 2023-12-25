@@ -167,9 +167,6 @@ class TestSupplier(Base):
         page.input_company_info(supplier["company_info"])
         page.input_remark(supplier["remark"])
         page.select_status(supplier["status"])
-
-
-
     @allure.epic("供应商管理")
     @allure.title("添加供应商")
     @pytest.mark.parametrize("supplier", create_data)
@@ -201,7 +198,6 @@ class TestSupplier(Base):
             page.click_to_edit_page()
         with allure.step("编辑供应商"):
             self.fill_supplier_form(page, supplier)
-            # time.sleep(10)
             with allure.step("点击编辑按钮"):
                 res = page.click_edit_button(supplier,numbers)
             with allure.step("断言"):
