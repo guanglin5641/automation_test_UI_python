@@ -137,18 +137,18 @@ class SupplierPosition(object):
         操作编辑
         :return:
         '''
-        return f"//span[text()='保存']/parent::button"
+        return f'''//span[text()='保存']/parent::button'''
     def cancel_button(cls):
         '''
         操作编辑
         :return:
         '''
-        return f"//span[text()='取消']/parent::button"
+        return f'''//span[text()='取消']/parent::button'''
     def serial_number(cls):
         '''
         查找编号
         :return:
         '''
-        return f"//tr[@class='el-table__row'][1]//p[contains(text(), '编号：')]"
+        return f'''//tr[@class='el-table__row'][1]//p[contains(text(), '编号：')]'''
     def resource_type_lists(cls):
-        return  f"//div[@class='el-checkbox-group']//span[@class='el-checkbox__label']"
+        return  f'''//div[@class='el-checkbox-group']//span[@class='el-checkbox__label']'''
