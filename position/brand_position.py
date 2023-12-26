@@ -54,7 +54,7 @@ class BrandPosition(object):
         列表品牌主图
         :return:
         '''
-        return f"//tr[@class='el-table__row'][1]//td[3]//img"
+        return f"//tr[@class='el-table__row'][1]//td[3]//div[@class='cell']"
     @classmethod
     def brand_list_affiliated_company(cls):
         '''
@@ -119,6 +119,24 @@ class BrandPosition(object):
         :return:
         '''
         return f"//div[text()='logo']/parent::div//div[@class='yun-img-loader__in']"
+    def brand_edit_logo_upload_button(self):
+        '''
+        编辑品牌logo上传按钮
+        :return:
+        '''
+        return f"//div[@class='el-overlay yun-img-loader__pop'][1]//div[@class='el-scrollbar__view']//input[@class='el-input__inner']"
+    def brand_edit_logo_choose(self):
+        '''
+        编辑品牌logo选择图片
+        :return: 
+        '''''
+        return f"//div[@class='el-overlay yun-img-loader__pop'][1]//div[@class='el-scrollbar__view'][1]//div[@class='el-image']//img"
+    def brand_edit_logo_fix_button(self):
+        '''
+        编辑品牌logo确定按钮
+        :return:
+        '''
+        return f"//div[@class='el-overlay yun-img-loader__pop'][1]//span[text()='确定']/parent::button"
     @classmethod
     def brand_edit_main_img(cls):
         '''
@@ -126,6 +144,24 @@ class BrandPosition(object):
         :return:
         '''
         return f"//div[text()='主图']/parent::div//div[@class='yun-img-loader__in']"
+    def brand_edit_main_img_upload_button(self):
+        '''
+        编辑品牌主图上传按钮
+        :return:
+        '''
+        return f"//div[@class='el-overlay yun-img-loader__pop'][2]//div[@class='el-scrollbar__view']//input[@class='el-input__inner']"
+    def brand_edit_main_img_choose(self):
+        '''
+        编辑品牌主图选择图片
+        :return:
+        '''
+        return f"//div[@class='el-overlay yun-img-loader__pop'][2]//div[@class='el-scrollbar__view'][1]//div[@class='el-image']//img"
+    def brand_edit_main_img_fix_button(self):
+        '''
+        编辑品牌主图确定按钮
+        :return:
+        '''
+        return f"//div[@class='el-overlay yun-img-loader__pop'][2]//span[text()='确定']/parent::button"
     @classmethod
     def brand_edit_main_categories(cls):
         '''
@@ -153,7 +189,8 @@ class BrandPosition(object):
         消费群体
         :return:
         '''
-        return f"//label[text()='消费群体']/parent::div//input"
+        # return f"//label[text()='消费群体']/parent::div//input"
+        return f"/html/body/div[1]/div[1]/section/main/div[2]/form/div[8]/div/div/div/input"
     @classmethod
     def brand_edit_brand_positioning(cls):
         '''
@@ -195,16 +232,23 @@ class BrandPosition(object):
         编辑备注
         :return:
         '''
-        return f"//label[text()='备注']/parent::div//input"
+        return f"//label[text()='备注']/parent::div//div//textarea"
     @classmethod
-    def brand_edit_add_button(cls):
+    def brand_button_edit_add(cls):
         '''
         编辑新增按钮
         :return:
         '''
+
+        return f"//span[text()='新增']/parent::button"
+    def brand_button_edit_submit(cls):
+        '''
+        编辑提交按钮
+        :return:
+        '''
         return f"//span[text()='提交']/parent::button"
     @classmethod
-    def brand_edit_cancel_button(cls):
+    def brand_button_edit_cancel(cls):
         '''
         编辑品牌取消按钮
         :return:
