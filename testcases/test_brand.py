@@ -1,7 +1,7 @@
 import time
 
 import pytest
-
+from common.path import get_path
 from testcases.base import Base
 from page.login_page import LoginPage
 from page.brand_page import BrandPositionPage
@@ -11,8 +11,8 @@ create_data=[
     {
         "brand_name":"测试",
         "brand_status":"启用",
-        "brand_logo":"https://img.dac6.cn/warehouse/09ee2eba07d6afcd0821c3b840129a35.jpg",
-        "brand_main_img":"https://img.dac6.cn/warehouse/1e9c47aa3e9eb29b578c4e6e5b44a1fe.png",
+        "brand_logo": get_path.get_image_path("logo.png"),
+        "brand_main_img":r"C:\Users\EDY\Downloads/ca9887acfce75d52caddc723f908f1d6.png",
         "main_categories":"",
         "alias":"测试别名",
         "english_name":"测试英文名",
@@ -59,6 +59,6 @@ class Testbrand(Base):
                 ret = page.click_brand_save_button()
                 print(ret)
 
-                # with allure.step("断言"):
-                #     assert ret == brand["expected_outcome"]
+                with allure.step("断言"):
+                    assert ret == brand["expected_outcome"]
 

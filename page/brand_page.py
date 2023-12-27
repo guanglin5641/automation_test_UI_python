@@ -70,15 +70,11 @@ class BrandPositionPage(BasePage, BrandPosition):
         if not brand_logo:
             return
         self.find_element(position_expression=self.brand_edit_logo()).click()
-        a = self.find_element(position_expression=self.brand_edit_logo_upload_button())
-        a.send_keys(brand_logo)
-        a.send_keys(Keys.ENTER)
+        self.find_element(position_expression=self.brand_edit_logo_upload_button()).send_keys(brand_logo)
         self.find_element(position_expression=self.brand_edit_logo_choose()).click()
-
         logo_link = self.find_element(position_expression=self.brand_edit_logo_choose()).get_attribute('src')
         self.find_element(position_expression=self.brand_edit_logo_fix_button()).click()
-        time.sleep(10)
-
+        return logo_link
     def enter_brand_main_img(self, brand_main_img):
         '''
         输入品牌主图
@@ -88,9 +84,8 @@ class BrandPositionPage(BasePage, BrandPosition):
         if not brand_main_img:
             return
         self.find_element(position_expression=self.brand_edit_main_img()).click()
-        a = self.find_element(position_expression=self.brand_edit_main_img_upload_button())
-        a.send_keys(brand_main_img)
-        a.send_keys(Keys.ENTER)
+        self.find_element(position_expression=self.brand_edit_main_img_upload_button()).send_keys(brand_main_img)
+        time.sleep(1)
         self.find_element(position_expression=self.brand_edit_main_img_choose()).click()
         main_img_link=self.find_element(position_expression=self.brand_edit_main_img_choose()).get_attribute('src')
         self.find_element(position_expression=self.brand_edit_main_img_fix_button()).click()
@@ -104,7 +99,10 @@ class BrandPositionPage(BasePage, BrandPosition):
         '''
         if not main_categories:
             return
-        self.find_element(position_expression=self.brand_edit_main_categories()).send_keys(main_categories)
+        self.find_element(position_expression=self.brand_edit_main_categories()).click()
+        time.sleep(100)
+        self.find_element(position_expression=self.brand_edit_main_categories_select_box_one_click()).click()
+
     def enter_brand_alias(self,alias):
         '''
         输入品牌别名
@@ -270,5 +268,3 @@ class BrandPositionPage(BasePage, BrandPosition):
                 return "符合预期"
         except AssertionError as e:
             return str(e)
-
-
