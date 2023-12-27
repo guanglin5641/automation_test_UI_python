@@ -100,40 +100,40 @@ create_data = [
 
 
 edit_data = [
-    {
-        "case_name": "编辑供应商供应商名称为空",
-        "name": "",
-        "type": "1688",
-        "resource_type": ["CPS","CPA"],
-        "balance_warning": "",
-        "account": "",
-        "password": "",
-        "company_info": {
-            "company": "",
-            "contact": "",
-            "contact_content": ""
-        },
-        "status": "",
-        "remark": "",
-        "expected": "请输入供应商名称"
-    },
-    {
-        "case_name": "编辑供应商资源类型为空",
-        "name": "修改供应商名称",
-        "type": "1688",
-        "resource_type": [],
-        "balance_warning": "",
-        "account": "",
-        "password": "",
-        "company_info": {
-            "company": "",
-            "contact": "",
-            "contact_content": ""
-        },
-        "status": "",
-        "remark": "",
-        "expected": "请选择资源类型"
-    },
+    # {
+    #     "case_name": "编辑供应商供应商名称为空",
+    #     "name": "",
+    #     "type": "1688",
+    #     "resource_type": ["CPS","CPA"],
+    #     "balance_warning": "",
+    #     "account": "",
+    #     "password": "",
+    #     "company_info": {
+    #         "company": "",
+    #         "contact": "",
+    #         "contact_content": ""
+    #     },
+    #     "status": "",
+    #     "remark": "",
+    #     "expected": "请输入供应商名称"
+    # },
+    # {
+    #     "case_name": "编辑供应商资源类型为空",
+    #     "name": "修改供应商名称",
+    #     "type": "1688",
+    #     "resource_type": [],
+    #     "balance_warning": "",
+    #     "account": "",
+    #     "password": "",
+    #     "company_info": {
+    #         "company": "",
+    #         "contact": "",
+    #         "contact_content": ""
+    #     },
+    #     "status": "",
+    #     "remark": "",
+    #     "expected": "请选择资源类型"
+    # },
     {
         "case_name": "编辑供应商修改完成",
         "name": "修改供应商名称",

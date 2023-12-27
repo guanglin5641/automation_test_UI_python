@@ -305,12 +305,12 @@ class SupplierPage(BasePage, SupplierPosition):
                 if data['balance_warning'] != balance_warning:
                     failed_assertions.append(
                         f"查找 'balance_warning' 不存在. 预期: {data['balance_warning']}, 实际: {list[6]}")
-            if 'company' in data[0]['company_info']['company'] and data['company_info']['company']:
+            if 'company' in data['company_info']['company'] and data['company_info']['company']:
                 company = re.search(r'公司：(.*)', list[3]).group(1)
                 if data['company_info']['company'] != company:
                     failed_assertions.append(
                         f"查找 'contact_company' 不存在. 预期: {data['company_info']['company']}, 实际: {list[3]}")
-            if 'contact_content' in data[0]['company_info']['contact_content'] and data['company_info']['contact_content']:
+            if 'contact_content' in data['company_info']['contact_content'] and data['company_info']['contact_content']:
                 contact_content = re.search(r'联系方式：(.*)', list[4]).group(1)
                 if data['company_info']['contact_content'] != contact_content:
                     failed_assertions.append(
