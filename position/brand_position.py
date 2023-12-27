@@ -124,7 +124,7 @@ class BrandPosition(object):
         编辑品牌logo上传按钮
         :return:
         '''
-        return f"//div[@class='el-overlay yun-img-loader__pop'][1]//div[@class='el-scrollbar__view']//input[@class='el-input__inner']"
+        return f"//div[@class='el-overlay yun-img-loader__pop'][1]//div[@class='el-scrollbar__view']//input[@class='el-upload__input']"
     def brand_edit_logo_choose(self):
         '''
         编辑品牌logo选择图片
@@ -149,7 +149,7 @@ class BrandPosition(object):
         编辑品牌主图上传按钮
         :return:
         '''
-        return f"//div[@class='el-overlay yun-img-loader__pop'][2]//div[@class='el-scrollbar__view']//input[@class='el-input__inner']"
+        return f"//div[@class='el-overlay yun-img-loader__pop'][2]//div[@class='el-scrollbar__view']//input[@class='el-upload__input']"
     def brand_edit_main_img_choose(self):
         '''
         编辑品牌主图选择图片
@@ -169,6 +169,55 @@ class BrandPosition(object):
         :return:
         '''
         return f"//label[text()='主营类目']/parent::div//div[@class='el-dropdown w-full']"
+    @classmethod
+    def brand_edit_main_categories_select_box_one(cls):
+        '''
+        编辑品牌主营类目选择框
+        :return:
+        '''
+        return f"//div[@class='el-scrollbar__view el-dropdown__list']//p[text()='一级类目']/parent::section//li//p"
+    def brand_edit_main_categories_select_box_one_click(cls,i):
+        '''
+        编辑品牌主营类目选择框
+        :return:
+        '''
+        return f"//div[@class='el-scrollbar__view el-dropdown__list']//p[text()='一级类目']/parent::section//li[{i}]"
+    def brand_edit_main_categories_select_box_two(cls):
+        '''
+        编辑品牌主营类目选择框
+        :return:
+        '''
+        return f"//div[@class='el-scrollbar__view el-dropdown__list']//p[text()='二级类目']/parent::section//li//p"
+    def brand_edit_main_categories_select_box_two_click(cls,i):
+        '''
+        编辑品牌主营类目选择框
+        :return:
+        '''
+        return f"//div[@class='el-scrollbar__view el-dropdown__list']//p[text()='二级类目']/parent::section//li[{i}]"
+    def brand_edit_main_categories_select_box_three(cls):
+        '''
+        编辑品牌主营类目选择框
+        :return:
+        '''
+        return f"//div[@class='el-scrollbar__view el-dropdown__list']//p[text()='三级类目']/parent::section//li//p"
+    def brand_edit_main_categories_select_box_three_click(cls,i):
+        '''
+        编辑品牌主营类目选择框
+        :return:
+        '''
+        return f"//div[@class='el-scrollbar__view el-dropdown__list']//p[text()=三级类目']/parent::section//li[{i}]"
+    def brand_edit_main_categories_select_box_four(cls):
+        '''
+        编辑品牌主营类目选择框
+        :return:
+        '''
+        return f"//div[@class='el-scrollbar__view el-dropdown__list']//p[text()='四级类目']/parent::section//li//p"
+    def brand_edit_main_categories_select_box_four_click(cls,i):
+        '''
+        编辑品牌主营类目选择框
+        :return:
+        '''
+        return f"//div[@class='el-scrollbar__view el-dropdown__list']//p[text()='四级类目']/parent::section//li[{i}]"
     @classmethod
     def brand_edit_alias(cls):
         '''

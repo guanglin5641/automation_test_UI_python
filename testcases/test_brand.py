@@ -11,9 +11,9 @@ create_data=[
     {
         "brand_name":"测试",
         "brand_status":"启用",
-        "brand_logo":"https://img.dac6.cn/warehouse/09ee2eba07d6afcd0821c3b840129a35.jpg",
-        "brand_main_img":"https://img.dac6.cn/warehouse/1e9c47aa3e9eb29b578c4e6e5b44a1fe.png",
-        "main_categories":"",
+        "brand_logo":r"C:\Users\EDY\Downloads/2f637a653cf5f00101f2270326eeca67 (2).png",
+        "brand_main_img":r"C:\Users\EDY\Downloads/ca9887acfce75d52caddc723f908f1d6.png",
+        "main_categories":"a",
         "alias":"测试别名",
         "english_name":"测试英文名",
         "consumer_group":"测试消费群体",
@@ -40,24 +40,24 @@ class Testbrand(Base):
         with allure.step('进入新增品牌页面'):
             page.click_add_brand()
         with allure.step('输入品牌信息'):
-            page.enter_brand_name(brand["brand_name"])
-            page.enter_brand_status(brand["brand_status"])
-            page.enter_brand_logo(brand["brand_logo"])
-            page.enter_brand_main_img(brand["brand_main_img"])
+            # page.enter_brand_name(brand["brand_name"])
+            # page.enter_brand_status(brand["brand_status"])
+            # page.enter_brand_logo(brand["brand_logo"])
+            # page.enter_brand_main_img(brand["brand_main_img"])
             page.enter_brand_main_categories(brand["main_categories"])
-            page.enter_brand_alias(brand["alias"])
-            page.enter_brand_english_name(brand["english_name"])
-            page.enter_brand_consumer_group(brand["consumer_group"])
-            page.enter_brand_brand_positioning(brand["brand_positioning"])
-            page.enter_brand_sort(brand["sort"])
-            page.enter_brand_establishment_time(brand["establishment_time"])
-            page.enter_brand_origin(brand["origin"])
-            page.enter_brand_affiliated_company(brand["affiliated_company"])
-            page.enter_brand_remark(brand["remark"])
-            with allure.step("点击新增"):
-
-                ret = page.click_brand_save_button()
-                print(ret)
+            # page.enter_brand_alias(brand["alias"])
+            # page.enter_brand_english_name(brand["english_name"])
+            # page.enter_brand_consumer_group(brand["consumer_group"])
+            # page.enter_brand_brand_positioning(brand["brand_positioning"])
+            # page.enter_brand_sort(brand["sort"])
+            # page.enter_brand_establishment_time(brand["establishment_time"])
+            # page.enter_brand_origin(brand["origin"])
+            # page.enter_brand_affiliated_company(brand["affiliated_company"])
+            # page.enter_brand_remark(brand["remark"])
+            # with allure.step("点击新增"):
+            #
+            #     ret = page.click_brand_save_button()
+            #     print(ret)
 
                 # with allure.step("断言"):
                 #     assert ret == brand["expected_outcome"]
