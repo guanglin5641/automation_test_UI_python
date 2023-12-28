@@ -18,7 +18,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         获取列表页的文本内容
         :return: 包含列表页各元素文本信息的字典
         '''
-        brand_list_id = self.find_element(position_expression=self.brand_list_id()).text
+        # brand_list_id = self.find_element(position_expression=self.brand_list_id()).text
         brand_list_name = self.find_element(position_expression=self.brand_list_name()).text
         brand_list_logo = self.find_element(position_expression=self.brand_list_logo()).get_attribute('src')
         brand_list_main_img = self.find_element(position_expression=self.brand_list_main_img())
@@ -35,7 +35,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         brand_list_sort = self.find_element(position_expression=self.brand_list_sort()).text
 
 
-        return brand_list_id,brand_list_name,brand_list_logo,brand_list_main_imgs,brand_list_affiliated_company,brand_list_main_categories,brand_list_time,brand_list_sort
+        return brand_list_name,brand_list_logo,brand_list_main_imgs,brand_list_affiliated_company,brand_list_main_categories,brand_list_time,brand_list_sort
     def click_add_brand(self):
         '''
         列表页点击之后跳转到新增页面
@@ -184,7 +184,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         if not remark:
             return
         self.find_element(position_expression=self.brand_edit_remark()).send_keys(remark)
-    def click_brand_save_button(self):
+    def click_brand_save_button(self,data):
         '''
         新增页面点击保存按钮
         :return:
@@ -208,12 +208,11 @@ class BrandPositionPage(BasePage, BrandPosition):
         if isinstance(ret, bool):
             # 添加你的额外判断条件
             # return "创建成功"
-            # result = self.is_page_in_expected_state(data)  # 自定义的判断函数
-            # if result == "符合预期":
-            #     return "创建成功"
-            # else:
-            #     return f"页面状态不符合预期: {result}"
-            return "创建成功"
+            result = self.brand_is_page_in_expected_state(data)  # 自定义的判断函数
+            if result == "符合预期":
+                return "添加品牌成功"
+            else:
+                return f"页面状态不符合预期: {result}"
         else:
             return ret.text
     def click_brand_cancel_button(self):
@@ -227,41 +226,12 @@ class BrandPositionPage(BasePage, BrandPosition):
             list = self.get_brand_list_text()
             failed_assertions = []
 
-            if 'name' in data and data['name']:
-                if data['name'] != list[0]:
+            if 'brand_name' in data and data['brand_name']:
+                print(111)
+                if data['brand_name'] != list[0]:
                     failed_assertions.append(
-                        f"查找 'name' 不存在. 预期: {data['name']}, 实际: {list[0]}")
-            if 'type' in data and data['type']:
-                if data['type'] != list[1]:
-                    failed_assertions.append(
-                        f" 'super_type' 不存在. 预期: {data['super_type']}, 实际: {list[1]}")
-            if 'resource_type' in data and data['resource_type']:
-                if data['resource_type'] != list[2]:
-                    failed_assertions.append(
-                        f"查找 'resource_type' 不存在. 预期: {data['resource_type']}, 实际: {list[2]}")
-            if 'balance_warning' in data and data['balance_warning'] :
-                balance_warning = re.search(r'\d+', list[6]).group()
-                if data['balance_warning'] != balance_warning:
-                    failed_assertions.append(
-                        f"查找 'balance_warning' 不存在. 预期: {data['balance_warning']}, 实际: {list[6]}")
-            if 'company' in data[0]['company_info']['company'] and data['company_info']['company']:
-                company = re.search(r'公司：(.*)', list[3]).group(1)
-                if data['company_info']['company'] != company:
-                    failed_assertions.append(
-                        f"查找 'contact_company' 不存在. 预期: {data['company_info']['company']}, 实际: {list[3]}")
-            if 'contact_content' in data[0]['company_info']['contact_content'] and data['company_info']['contact_content']:
-                contact_content = re.search(r'联系方式：(.*)', list[4]).group(1)
-                if data['company_info']['contact_content'] != contact_content:
-                    failed_assertions.append(
-                        f"查找 'contact_information' 不存在. 预期: {data['company_info']['contact_content']}, 实际: {list[4]}")
-            if 'status' in data and data['status'] != None:
-                if data['status'] != list[5]:
-                    failed_assertions.append(
-                        f"查找 'state' 不存在. 预期: {data['state']}, 实际: {list[5]}")
-            if 'remark' in data and data['remark'] != None:
-                if data['remark'] != list[8]:
-                    failed_assertions.append(
-                        f"查找 'remark' 不存在. 预期: {data['remark']}, 实际: {list[8]}")
+                        f"查找 'name' 不存在. 预期: {data['brand_name']}, 实际: {list[0]}")
+
             if failed_assertions:
                 return "\n".join(failed_assertions)
             else:

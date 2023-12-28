@@ -56,7 +56,7 @@ class Testbrand(Base):
             page.enter_brand_remark(brand["remark"])
             with allure.step("点击新增"):
 
-                ret = page.click_brand_save_button()
+                ret = page.click_brand_save_button(create_data)
                 print(ret)
 
                 with allure.step("断言"):
