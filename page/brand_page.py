@@ -184,7 +184,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         if not remark:
             return
         self.find_element(position_expression=self.brand_edit_remark()).send_keys(remark)
-    def click_brand_save_button(self,data):
+    def click_brand_save_button(self,data,logo,main_img):
         '''
         新增页面点击保存按钮
         :return:
@@ -208,7 +208,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         if isinstance(ret, bool):
             # 添加你的额外判断条件
             # return "创建成功"
-            result = self.brand_is_page_in_expected_state(data)  # 自定义的判断函数
+            result = self.brand_is_page_in_expected_state(data,logo,main_img)  # 自定义的判断函数
             if result == "符合预期":
                 return "添加品牌成功"
             else:
@@ -221,17 +221,46 @@ class BrandPositionPage(BasePage, BrandPosition):
         :return:
         '''
         self.find_element(position_expression=self.click_brand_cancel_button()).click()
-    def brand_is_page_in_expected_state(self,data):
+    def brand_is_page_in_expected_state(self,brand_data,logo,main_img):
+        '''
+        页面断言
+        :param data:
+        :return:
+        '''
         try:
             list = self.get_brand_list_text()
             failed_assertions = []
 
-            if 'brand_name' in data and data['brand_name']:
-                print(111)
-                if data['brand_name'] != list[0]:
+            if 'brand_name' in brand_data[0] and brand_data[0]['brand_name']:
+                print(list[0])
+                if brand_data[0]['brand_name'] != list[0]:
                     failed_assertions.append(
-                        f"查找 'name' 不存在. 预期: {data['brand_name']}, 实际: {list[0]}")
-
+                        f"查找 'name' 不存在. 预期: {brand_data['brand_name']}, 实际: {list[0]}")
+            if 'brand_logo' in brand_data[0]["brand_logo"] and brand_data[0]['brand_logo']:
+                print(list[1])
+                if logo != list[1]:
+                    failed_assertions.append(
+                        f"查找 'logo' 不存在. 预期: {logo}, 实际: {logo}")
+            if 'brand_main_img' in brand_data[0]["brand_main_img"] and brand_data[0]['brand_main_img']:
+                print(list[2])
+                if main_img != list[2]:
+                    failed_assertions.append(
+                        f"查找 'main_img' 不存在. 预期: {main_img}, 实际: {main_img}")
+            if 'affiliated_company' in brand_data[0]["affiliated_company"] and brand_data[0]['affiliated_company']:
+                print(list[3])
+                if brand_data[0]['affiliated_company'] != list[3]:
+                    failed_assertions.append(
+                        f"查找 'affiliated_company' 不存在. 预期: {brand_data['affiliated_company']}, 实际: {list[3]}")
+            if 'establishment_time' in brand_data[0]["establishment_time"] and brand_data[0]['establishment_time']:
+                print(list[4])
+                if brand_data[0]['establishment_time'] != list[4]:
+                    failed_assertions.append(
+                        f"查找 'establishment_time' 不存在. 预期: {brand_data['establishment_time']}, 实际: {list[4]}")
+            if 'sort' in brand_data[0]["sort"] and brand_data[0]['sort']:
+                print(list[5])
+                if brand_data[0]['sort'] != list[5]:
+                    failed_assertions.append(
+                        f"查找 'sort' 不存在. 预期: {brand_data['sort']}, 实际: {list[5]}")
             if failed_assertions:
                 return "\n".join(failed_assertions)
             else:

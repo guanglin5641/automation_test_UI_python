@@ -12,7 +12,7 @@ create_data=[
         "brand_name":"测试",
         "brand_status":"启用",
         "brand_logo": get_path.get_image_path("logo.png"),
-        "brand_main_img":r"C:\Users\EDY\Downloads/ca9887acfce75d52caddc723f908f1d6.png",
+        "brand_main_img":get_path.get_image_path('main_img.png'),
         "main_categories":"",
         "alias":"测试别名",
         "english_name":"测试英文名",
@@ -23,6 +23,23 @@ create_data=[
         "origin":"测试发源地",
         "affiliated_company":"测试所属公司",
         "remark":"测试备注",
+        "expected_outcome":"添加品牌成功"
+    },
+    {
+        "brand_name":"测试",
+        "brand_status":"启用",
+        "brand_logo": get_path.get_image_path("logo.png"),
+        "brand_main_img":"",
+        "main_categories":"",
+        "alias":"",
+        "english_name":"",
+        "consumer_group":"",
+        "brand_positioning":"",
+        "sort":"",
+        "establishment_time":"",
+        "origin":"",
+        "affiliated_company":"",
+        "remark":"",
         "expected_outcome":"添加品牌成功"
     },
 
@@ -42,8 +59,8 @@ class Testbrand(Base):
         with allure.step('输入品牌信息'):
             page.enter_brand_name(brand["brand_name"])
             page.enter_brand_status(brand["brand_status"])
-            page.enter_brand_logo(brand["brand_logo"])
-            page.enter_brand_main_img(brand["brand_main_img"])
+            logo_link = page.enter_brand_logo(brand["brand_logo"])
+            main_img_link = page.enter_brand_main_img(brand["brand_main_img"])
             page.enter_brand_main_categories(brand["main_categories"])
             page.enter_brand_alias(brand["alias"])
             page.enter_brand_english_name(brand["english_name"])
@@ -56,8 +73,7 @@ class Testbrand(Base):
             page.enter_brand_remark(brand["remark"])
             with allure.step("点击新增"):
 
-                ret = page.click_brand_save_button(create_data)
-                print(ret)
+                ret = page.click_brand_save_button(create_data,logo_link,main_img_link)
 
                 with allure.step("断言"):
                     assert ret == brand["expected_outcome"]
