@@ -42,6 +42,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         :return:
         '''
         self.find_element(position_expression=self.brand_banner_add_button()).click()
+
     def enter_brand_name(self, brand_name):
         '''
         输入品牌名称
@@ -59,7 +60,6 @@ class BrandPositionPage(BasePage, BrandPosition):
         '''
         if not brand_status:
             return
-
         self.find_element(position_expression=self.brand_edit_status()).click()
     def enter_brand_logo(self, brand_logo):
         '''
@@ -85,11 +85,9 @@ class BrandPositionPage(BasePage, BrandPosition):
             return
         self.find_element(position_expression=self.brand_edit_main_img()).click()
         self.find_element(position_expression=self.brand_edit_main_img_upload_button()).send_keys(brand_main_img)
-        time.sleep(1)
         self.find_element(position_expression=self.brand_edit_main_img_choose()).click()
         main_img_link=self.find_element(position_expression=self.brand_edit_main_img_choose()).get_attribute('src')
         self.find_element(position_expression=self.brand_edit_main_img_fix_button()).click()
-        time.sleep(1)
         return main_img_link
     def enter_brand_main_categories(self,main_categories):
         '''
@@ -100,7 +98,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         if not main_categories:
             return
         self.find_element(position_expression=self.brand_edit_main_categories()).click()
-        time.sleep(100)
+        self.scroll_page(position_expression=self.brand_edit_alias())
         self.find_element(position_expression=self.brand_edit_main_categories_select_box_one_click()).click()
 
     def enter_brand_alias(self,alias):
@@ -111,6 +109,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         '''
         if not alias:
             return
+        self.scroll_page(position_expression=self.brand_edit_alias())
         self.find_element(position_expression=self.brand_edit_alias()).send_keys(alias)
     def enter_brand_english_name(self,english_name):
         '''
@@ -120,6 +119,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         '''
         if not english_name:
             return
+        self.scroll_page(position_expression=self.brand_edit_english_name())
         self.find_element(position_expression=self.brand_edit_english_name()).send_keys(english_name)
     def enter_brand_consumer_group(self,consumer_group):
         '''
@@ -129,6 +129,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         '''
         if not consumer_group:
             return
+        self.scroll_page(position_expression=self.brand_edit_consumer_group())
         self.find_element(position_expression=self.brand_edit_consumer_group()).send_keys(consumer_group)
     def enter_brand_brand_positioning(self,brand_positioning):
         '''
@@ -138,6 +139,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         '''
         if not brand_positioning:
             return
+        self.scroll_page(position_expression=self.brand_edit_brand_positioning())
         self.find_element(position_expression=self.brand_edit_brand_positioning()).send_keys(brand_positioning)
     def enter_brand_sort(self,sort):
         '''
@@ -147,6 +149,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         '''
         if not sort:
             return
+        self.scroll_page(position_expression=self.brand_edit_sort())
         self.find_element(position_expression=self.brand_edit_sort()).send_keys(sort)
     def enter_brand_establishment_time(self,establishment_time):
         '''
@@ -156,6 +159,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         '''
         if not establishment_time:
             return
+        self.scroll_page(position_expression=self.brand_edit_establishment_time())
         self.find_element(position_expression=self.brand_edit_establishment_time()).send_keys(establishment_time)
     def enter_brand_origin(self,origin):
         '''
@@ -165,6 +169,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         '''
         if not origin:
             return
+        self.scroll_page(position_expression=self.brand_edit_origin())
         self.find_element(position_expression=self.brand_edit_origin()).send_keys(origin)
     def enter_brand_affiliated_company(self,affiliated_company):
         '''
@@ -174,6 +179,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         '''
         if not affiliated_company:
             return
+        self.scroll_page(position_expression=self.brand_edit_affiliated_company())
         self.find_element(position_expression=self.brand_edit_affiliated_company()).send_keys(affiliated_company)
     def enter_brand_remark(self,remark):
         '''
@@ -183,6 +189,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         '''
         if not remark:
             return
+        self.scroll_page(position_expression=self.brand_edit_remark())
         self.find_element(position_expression=self.brand_edit_remark()).send_keys(remark)
     def click_brand_save_button(self,data,logo,main_img):
         '''
@@ -220,6 +227,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         新增页面点击取消按钮
         :return:
         '''
+
         self.find_element(position_expression=self.click_brand_cancel_button()).click()
     def brand_is_page_in_expected_state(self,brand_data,logo,main_img):
         '''
@@ -230,37 +238,30 @@ class BrandPositionPage(BasePage, BrandPosition):
         try:
             list = self.get_brand_list_text()
             failed_assertions = []
-
-            if 'brand_name' in brand_data[0] and brand_data[0]['brand_name']:
-                print(list[0])
-                if brand_data[0]['brand_name'] != list[0]:
+            if 'brand_name' in brand_data and brand_data['brand_name']:
+                if brand_data['brand_name'] != list[0]:
                     failed_assertions.append(
                         f"查找 'name' 不存在. 预期: {brand_data['brand_name']}, 实际: {list[0]}")
-            if 'brand_logo' in brand_data[0]["brand_logo"] and brand_data[0]['brand_logo']:
-                print(list[1])
+            if 'brand_logo' in brand_data and brand_data['brand_logo']:
                 if logo != list[1]:
                     failed_assertions.append(
                         f"查找 'logo' 不存在. 预期: {logo}, 实际: {logo}")
-            if 'brand_main_img' in brand_data[0]["brand_main_img"] and brand_data[0]['brand_main_img']:
-                print(list[2])
+            if 'brand_main_img' in brand_data and brand_data['brand_main_img']:
                 if main_img != list[2]:
                     failed_assertions.append(
                         f"查找 'main_img' 不存在. 预期: {main_img}, 实际: {main_img}")
-            if 'affiliated_company' in brand_data[0]["affiliated_company"] and brand_data[0]['affiliated_company']:
-                print(list[3])
-                if brand_data[0]['affiliated_company'] != list[3]:
+            if 'affiliated_company' in brand_data and brand_data['affiliated_company']:
+                if brand_data['affiliated_company'] != list[3]:
                     failed_assertions.append(
                         f"查找 'affiliated_company' 不存在. 预期: {brand_data['affiliated_company']}, 实际: {list[3]}")
-            if 'establishment_time' in brand_data[0]["establishment_time"] and brand_data[0]['establishment_time']:
-                print(list[4])
-                if brand_data[0]['establishment_time'] != list[4]:
+            if 'establishment_time' in brand_data and brand_data['establishment_time']:
+                if brand_data['establishment_time'] != list[5]:
                     failed_assertions.append(
-                        f"查找 'establishment_time' 不存在. 预期: {brand_data['establishment_time']}, 实际: {list[4]}")
-            if 'sort' in brand_data[0]["sort"] and brand_data[0]['sort']:
-                print(list[5])
-                if brand_data[0]['sort'] != list[5]:
+                        f"查找 'establishment_time' 不存在. 预期: {brand_data['establishment_time']}, 实际: {list[5]}")
+            if 'sort' in brand_data and brand_data['sort']:
+                if brand_data['sort'] != list[6]:
                     failed_assertions.append(
-                        f"查找 'sort' 不存在. 预期: {brand_data['sort']}, 实际: {list[5]}")
+                        f"查找 'sort' 不存在. 预期: {brand_data['sort']}, 实际: {list[6]}")
             if failed_assertions:
                 return "\n".join(failed_assertions)
             else:

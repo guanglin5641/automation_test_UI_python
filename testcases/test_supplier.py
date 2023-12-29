@@ -11,40 +11,40 @@ from common.tool import add_image_attach
 
 
 create_data = [
-   # {
-   #      "case_name": "创建供应商供应商类型为空",
-   #      "name": "测试",
-   #      "type": "",
-   #      "resource_type": "CPS",
-   #      "balance_warning": "",
-   #      "account": "",
-   #      "password": "",
-   #      "company_info": {
-   #          "company": "",
-   #          "contact": "",
-   #          "contact_content": "",
-   #      },
-   #      "status": "",
-   #      "remark": "",
-   #      "expected": "请选择供应商类型",
-   #  },
-   #  {
-   #      "case_name": "创建供应商资源类型为空",
-   #      "name": "测试",
-   #      "type": "1688",
-   #      "resource_type": "",
-   #      "balance_warning": "",
-   #      "account": "",
-   #      "password": "",
-   #      "company_info": {
-   #          "company": "",
-   #          "contact": "",
-   #          "contact_content": "",
-   #      },
-   #      "status": "",
-   #      "remark": "",
-   #      "expected": "请选择资源类型",
-   #  },
+   {
+        "case_name": "创建供应商供应商类型为空",
+        "name": "测试",
+        "type": "",
+        "resource_type": "CPS",
+        "balance_warning": "",
+        "account": "",
+        "password": "",
+        "company_info": {
+            "company": "",
+            "contact": "",
+            "contact_content": "",
+        },
+        "status": "",
+        "remark": "",
+        "expected": "请选择供应商类型",
+    },
+    {
+        "case_name": "创建供应商资源类型为空",
+        "name": "测试",
+        "type": "1688",
+        "resource_type": "",
+        "balance_warning": "",
+        "account": "",
+        "password": "",
+        "company_info": {
+            "company": "",
+            "contact": "",
+            "contact_content": "",
+        },
+        "status": "",
+        "remark": "",
+        "expected": "请选择资源类型",
+    },
     {
         "case_name": "创建供应商创建成功",
         "name": "测试",
@@ -62,78 +62,78 @@ create_data = [
         "remark": "",
         "expected": "创建成功",
     },
-    # {
-    #     "case_name": "创建供应商余额预警为空",
-    #     "name": "测试",
-    #     "type": "1688",
-    #     "resource_type": ["CPS"],
-    #     "balance_warning": "",
-    #     "account": "test-account",
-    #     "password": "password123",
-    #     "company_info": {
-    #         "company": "测试公司",
-    #         "contact": "测试联系人",
-    #         "contact_content": "联系方式",
-    #     },
-    #     "status": "启用",
-    #     "remark": "测试备注",
-    #     "expected": "创建成功",
-    # },
-    # {
-    #     "case_name": "创建供应商账号为空",
-    #     "name": "测试",
-    #     "type": "1688",
-    #     "resource_type": ["CPS"],
-    #     "balance_warning": "20",
-    #     "account": "",
-    #     "password": "password123",
-    #     "company_info": {
-    #         "company": "测试公司",
-    #         "contact": "测试联系人",
-    #         "contact_content": "联系方式",
-    #     },
-    #     "status": "启用",
-    #     "remark": "测试备注",
-    #     "expected": "创建成功",
-    # }
+    {
+        "case_name": "创建供应商余额预警为空",
+        "name": "测试",
+        "type": "1688",
+        "resource_type": ["CPS"],
+        "balance_warning": "",
+        "account": "test-account",
+        "password": "password123",
+        "company_info": {
+            "company": "测试公司",
+            "contact": "测试联系人",
+            "contact_content": "联系方式",
+        },
+        "status": "启用",
+        "remark": "测试备注",
+        "expected": "创建成功",
+    },
+    {
+        "case_name": "创建供应商账号为空",
+        "name": "测试",
+        "type": "1688",
+        "resource_type": ["CPS"],
+        "balance_warning": "20",
+        "account": "",
+        "password": "password123",
+        "company_info": {
+            "company": "测试公司",
+            "contact": "测试联系人",
+            "contact_content": "联系方式",
+        },
+        "status": "启用",
+        "remark": "测试备注",
+        "expected": "创建成功",
+    }
 ]
 
 
 edit_data = [
-    # {
-    #     "case_name": "编辑供应商供应商名称为空",
-    #     "name": "",
-    #     "type": "1688",
-    #     "resource_type": ["CPS","CPA"],
-    #     "balance_warning": "",
-    #     "account": "",
-    #     "password": "",
-    #     "company_info": {
-    #         "company": "",
-    #         "contact": "",
-    #         "contact_content": ""
-    #     },
-    #     "status": "",
-    #     "remark": "",
-    #     "expected": "请输入供应商名称"
-    # },
-    # {
-    #     "case_name": "编辑供应商资源类型为空",
-    #     "name": "修改供应商名称",
-    #     "type": "1688",
-    #     "resource_type": [],
-    #     "balance_warning": "",
-    #     "account": "",
-    #     "password": "",
-    #     "company_info": {
-    #         "company": "",
-    #         "contact": "",
-    #         "contact_content": ""
-    #     },
-    #     "status": "",
-    #     "remark": "",
-    #     "expected": "请选择资源类型"
-    # },
+    {
+        "case_name": "编辑供应商供应商名称为空",
+        "name": "",
+        "type": "1688",
+        "resource_type": ["CPS","CPA"],
+        "balance_warning": "",
+        "account": "",
+        "password": "",
+        "company_info": {
+            "company": "",
+            "contact": "",
+            "contact_content": ""
+        },
+        "status": "",
+        "remark": "",
+        "expected": "请输入供应商名称"
+    },
+    {
+        "case_name": "编辑供应商资源类型为空",
+        "name": "修改供应商名称",
+        "type": "1688",
+        "resource_type": [],
+        "balance_warning": "",
+        "account": "",
+        "password": "",
+        "company_info": {
+            "company": "",
+            "contact": "",
+            "contact_content": ""
+        },
+        "status": "",
+        "remark": "",
+        "expected": "请选择资源类型"
+    },
     {
         "case_name": "编辑供应商修改完成",
         "name": "修改供应商名称",
@@ -181,7 +181,7 @@ class TestSupplier(Base):
         with allure.step("添加供应商"):
             self.fill_supplier_form(page, supplier)
             with allure.step("点击添加按钮"):
-                res = page.click_add_button(create_data)
+                res = page.click_add_button(supplier)
             with allure.step("断言"):
                 assert res == supplier["expected"]
     @allure.epic("供应商管理")

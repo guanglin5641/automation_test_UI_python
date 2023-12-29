@@ -25,8 +25,25 @@ create_data=[
         "remark":"测试备注",
         "expected_outcome":"添加品牌成功"
     },
-    {
+{
         "brand_name":"测试",
+        "brand_status":"启用",
+        "brand_logo": get_path.get_image_path("logo.png"),
+        "brand_main_img":"",
+        "main_categories":"",
+        "alias":"",
+        "english_name":"",
+        "consumer_group":"",
+        "brand_positioning":"",
+        "sort":"2147483647",
+        "establishment_time":"",
+        "origin":"",
+        "affiliated_company":"",
+        "remark":"",
+        "expected_outcome":"添加品牌成功"
+    },
+    {
+        "brand_name":"",
         "brand_status":"启用",
         "brand_logo": get_path.get_image_path("logo.png"),
         "brand_main_img":"",
@@ -40,15 +57,32 @@ create_data=[
         "origin":"",
         "affiliated_company":"",
         "remark":"",
-        "expected_outcome":"添加品牌成功"
+        "expected_outcome":"请输入品牌名称"
+    },
+{
+        "brand_name":"测试",
+        "brand_status":"启用",
+        "brand_logo": "",
+        "brand_main_img":"",
+        "main_categories":"",
+        "alias":"",
+        "english_name":"",
+        "consumer_group":"",
+        "brand_positioning":"",
+        "sort":"",
+        "establishment_time":"",
+        "origin":"",
+        "affiliated_company":"",
+        "remark":"",
+        "expected_outcome":"请上传logo"
     },
 
 ]
-class Testbrand(Base):
+class TestBrand(Base):
     @allure.epic("品牌管理")
     @allure.title("添加品牌")
     @pytest.mark.parametrize("brand", create_data)
-    def test_add_supplier(self,driver,brand):
+    def test_add_supplier(self, driver, brand):
         with allure.step("登录"):
             LoginPage(driver).login_success()
             add_image_attach(driver, "登录")
@@ -73,7 +107,7 @@ class Testbrand(Base):
             page.enter_brand_remark(brand["remark"])
             with allure.step("点击新增"):
 
-                ret = page.click_brand_save_button(create_data,logo_link,main_img_link)
+                ret = page.click_brand_save_button(brand,logo_link,main_img_link)
 
                 with allure.step("断言"):
                     assert ret == brand["expected_outcome"]

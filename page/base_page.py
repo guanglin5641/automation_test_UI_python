@@ -216,7 +216,22 @@ class BasePage(object):
             raise NoSuchElementException(
                 f"元素不存在，定位方式：{position_type}，定位表达式：{position_expression}"
             )
+    #滑动页面加载页面所有元素
+    def scroll_page(self,position_expression,position_type=By.XPATH,timeout=5):
+        '''
 
+        :param position_expression:
+        :param position_type:
+        :param timeout:
+        :return:
+        '''
+        elm = self.find_element(
+            position_type=position_type,
+            position_expression=position_expression,
+            timeout=timeout,
+        )
+        self.driver.execute_script("arguments[0].scrollIntoView();", elm)
+        return elm
     def __find_element(self, func: Callable, timeout: int = 5):
         wait = WebDriverWait(self.driver, timeout)
         return wait.until(func())
