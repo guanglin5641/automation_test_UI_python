@@ -112,6 +112,12 @@ class BrandPosition(object):
         :return:
         '''
         return f"//label[text()='状态']/parent::div//div[@class='el-switch__inner']"
+    def brand_edit_status_text(self):
+        '''
+        编辑品牌状态文案
+        :return:
+        '''
+        return f"//label[text()='状态']/parent::div//span[@class='is-text']"
     @classmethod
     def brand_edit_logo(cls):
         '''
@@ -119,6 +125,7 @@ class BrandPosition(object):
         :return:
         '''
         return f"//div[text()='logo']/parent::div//div[@class='yun-img-loader__in']"
+
     def brand_edit_logo_upload_button(self):
         '''
         编辑品牌logo上传按钮
@@ -137,6 +144,12 @@ class BrandPosition(object):
         :return:
         '''
         return f"//div[@class='el-overlay yun-img-loader__pop'][1]//span[text()='确定']/parent::button"
+    def brand_edit_logo_cls(self):
+        '''
+        编辑logo清除
+        :return:
+        '''
+        return f"//div[text()='logo']/parent::div//li"
     @classmethod
     def brand_edit_main_img(cls):
         '''
@@ -162,6 +175,12 @@ class BrandPosition(object):
         :return:
         '''
         return f"//div[@class='el-overlay yun-img-loader__pop'][2]//span[text()='确定']/parent::button"
+    def brand_edit_main_img_cls(self):
+        '''
+        编辑logo清除
+        :return:
+        '''
+        return f"//div[text()='主图']/parent::div//li"
     @classmethod
     def brand_edit_main_categories(cls):
         '''
