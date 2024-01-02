@@ -10,12 +10,7 @@ class get_path():
         Returns:
             图片的绝对路径
         """
-
-        # 获取当前工作目录
-        current_working_directory = os.getcwd()
-
         # 构建图片目录的路径
-        # images_directory = os.path.join(current_working_directory, "images")
         parent_directory = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         image_data_path = os.path.join(parent_directory, "data/image_data")
 
@@ -27,6 +22,30 @@ class get_path():
         else:
             return ""
 
+    def get_case_path(self,case_name):
+        """获取用例文件的绝对路径
+
+        Args:
+            case_name: 用例文件的名称
+
+        Returns:
+            用例文件的绝对路径
+        """
+
+
+        parent_directory = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        case_data_path = os.path.join(parent_directory, "data/case_data")
+
+        # 构建用例的完整路径
+        case_path = os.path.join(case_data_path, case_name)
+        # 判断用例是否存在
+        if os.path.exists(case_path):
+            return case_path
+        else:
+            return ""
+
 if __name__ == '__main__':
-    image_path = get_image_path("logo.jpg")
-    print(image_path)
+    get_path = get_path()
+    print(get_path.get_case_path("brand_case.xlsx"))
+
+
