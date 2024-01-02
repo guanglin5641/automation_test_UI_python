@@ -97,9 +97,42 @@ edit_data = [
         "remark": "测试备注",
         "expected_outcome": "修改完成"
     },
-    # {
-    #
-    # },
+    {
+        "brand_name": "",
+        "brand_status": "启用",
+        "brand_logo": get_path.get_image_path("logo.png"),
+        "brand_main_img": get_path.get_image_path("logo.png"),
+        "main_categories": "",
+        "alias": "测试别名",
+        "english_name": "测试英文名",
+        "consumer_group": "测试消费群体",
+        "brand_positioning": "测试品牌定位",
+        "sort": "2147483647",
+        "establishment_time": "2023-11-11",
+        "origin": "测试发源地",
+        "affiliated_company": "测试所属公司",
+        "remark": "测试备注",
+        "expected_outcome": "请输入品牌名称"
+
+    },
+{
+        "brand_name": "测试",
+        "brand_status": "启用",
+        "brand_logo": "",
+        "brand_main_img": "",
+        "main_categories": "",
+        "alias": "",
+        "english_name": "",
+        "consumer_group": "",
+        "brand_positioning": "",
+        "sort": "",
+        "establishment_time": "",
+        "origin": "",
+        "affiliated_company": "",
+        "remark": "",
+        "expected_outcome": "请上传logo"
+    },
+
 ]
 
 
@@ -135,20 +168,20 @@ class TestBrand(Base):
             with allure.step("断言"):
                 assert ret == brand["expected_outcome"]
 
-    @allure.epic("供应商管理")
-    @allure.title("编辑供应商")
+    @allure.epic("品牌理")
+    @allure.title("编辑品牌")
     @pytest.mark.parametrize("brand", edit_data)
     def test_edit_supplier(self, driver, brand):
         with allure.step("登录"):
             LoginPage(driver).login_success()
             add_image_attach(driver, "登录")
-        with allure.step("进入供应商列表页"):
+        with allure.step("进入列表页"):
             page = BrandPositionPage(driver)
             numbers = page.number()
             print(numbers)
-        with allure.step("进入编辑供应商页面"):
+        with allure.step("进入编辑品牌页面"):
             page.click_edit_brand()
-        with allure.step("编辑供应商"):
+        with allure.step("编辑品牌"):
             page.enter_brand_name(brand["brand_name"])
             page.enter_brand_status(brand["brand_status"])
             logo_link = page.enter_brand_logo(brand["brand_logo"])

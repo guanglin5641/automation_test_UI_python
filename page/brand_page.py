@@ -123,7 +123,7 @@ class BrandPositionPage(BasePage, BrandPosition):
                 self.find_element(position_expression=self.brand_edit_main_img_cls()).click()
                 operate = self.find_element(position_expression=self.brand_edit_main_img_cls())
                 operate.send_keys(Keys.BACKSPACE)
-                print("元素可见")
+                # print("元素可见")
                 return
             return
         if a == 1:
@@ -372,32 +372,32 @@ class BrandPositionPage(BasePage, BrandPosition):
             list = self.get_brand_list_text()
             failed_assertions = []
             if 'brand_name' in brand_data and brand_data['brand_name']:
-                print(11)
+                # print(11)
                 if brand_data['brand_name'] != list[0]:
                     failed_assertions.append(
                         f"查找 'name' 不存在. 预期: {brand_data['brand_name']}, 实际: {list[0]}")
             if 'brand_logo' in brand_data and brand_data['brand_logo']:
-                print(2)
+                # print(2)
                 if logo != list[1]:
                     failed_assertions.append(
                         f"查找 'logo' 不存在. 预期: {logo}, 实际: {logo}")
             if 'brand_main_img' in brand_data and brand_data['brand_main_img']:
-                print(3)
+                # print(3)
                 if main_img != list[2]:
                     failed_assertions.append(
                         f"查找 'main_img' 不存在. 预期: {main_img}, 实际: {main_img}")
             if 'affiliated_company' in brand_data and brand_data['affiliated_company']:
-                print(4)
+                # print(4)
                 if brand_data['affiliated_company'] != list[3]:
                     failed_assertions.append(
                         f"查找 'affiliated_company' 不存在. 预期: {brand_data['affiliated_company']}, 实际: {list[3]}")
             if 'establishment_time' in brand_data and brand_data['establishment_time']:
-                print(5)
+                # print(5)
                 if brand_data['establishment_time'] != list[5]:
                     failed_assertions.append(
                         f"查找 'establishment_time' 不存在. 预期: {brand_data['establishment_time']}, 实际: {list[5]}")
             if 'sort' in brand_data and brand_data['sort']:
-                print(6)
+                # print(6)
                 if brand_data['sort'] != list[6]:
                     failed_assertions.append(
                         f"查找 'sort' 不存在. 预期: {brand_data['sort']}, 实际: {list[6]}")
