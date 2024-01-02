@@ -1,5 +1,5 @@
 import os
-class get_path():
+class GetPath():
 
     def get_image_path(image_name):
         """获取图片的绝对路径

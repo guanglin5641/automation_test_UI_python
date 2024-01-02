@@ -1,13 +1,13 @@
 import time
 
 import pytest
-from common.path import get_path
+from common.path import GetPath
 from testcases.base import Base
 from page.login_page import LoginPage
 from page.brand_page import BrandPositionPage
 import allure
 from common.tool import add_image_attach
-
+get_path = GetPath()
 create_data = [
     {
         "brand_name": "测试",
