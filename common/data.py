@@ -22,4 +22,4 @@ if __name__ == '__main__':
     get_path = GetPath()
     file_path = get_path.get_case_path("brand_case.xlsx")
     a = (case_data(file_path, "add_brand")[0]["操作"])
-    # print(a)
+

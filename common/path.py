@@ -45,7 +45,7 @@ class GetPath():
             return ""
 
 if __name__ == '__main__':
-    get_path = get_path()
+    get_path = GetPath()
     print(get_path.get_case_path("brand_case.xlsx"))
 
 

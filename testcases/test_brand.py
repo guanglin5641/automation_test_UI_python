@@ -41,7 +41,7 @@ class TestBrand(Base):
             page.enter_brand_affiliated_company(brand["操作"]["affiliated_company"])
             page.enter_brand_remark(brand["操作"]["remark"])
             with allure.step("点击新增"):
-                ret = page.click_brand_save_button(brand["操作"], logo_link, main_img_link)
+                ret = page.click_brand_save_button(brand["操作"],)
             with allure.step("断言"):
                 assert ret == brand["预期结果"]
                 # assert ret == brand["expected_outcome"]
@@ -56,7 +56,6 @@ class TestBrand(Base):
         with allure.step("进入列表页"):
             page = BrandPositionPage(driver)
             numbers = page.number()
-            print(numbers)
         with allure.step(brand["前置条件"]):
             page.click_edit_brand()
         with allure.step(brand["测试标题"]):
@@ -75,8 +74,7 @@ class TestBrand(Base):
             page.enter_brand_affiliated_company(brand["操作"]["affiliated_company"])
             page.enter_brand_remark(brand["操作"]["remark"])
             with allure.step("点击编辑按钮"):
-                rret = page.click_edit_button(brand["操作"], numbers, logo_link, main_img_link)
+                rret = page.click_edit_button(brand["操作"], numbers)
             with allure.step("断言"):
-                # assert rret == brand["expected_outcome"]
                 assert rret == brand["预期结果"]
 

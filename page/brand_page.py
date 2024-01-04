@@ -10,7 +10,9 @@ from selenium.webdriver.common.keys import Keys
 import re
 import json
 
-class BrandPositionPage(BasePage, BrandPosition):
+
+from page.component_page import ComponentPage
+class BrandPositionPage(ComponentPage, BrandPosition, BasePage):
     def __init__(self, driver, path=BRAND_LIST):
         super().__init__(driver, path)
     def get_brand_list_text(self):
@@ -75,69 +77,75 @@ class BrandPositionPage(BasePage, BrandPosition):
         if brand_status_text == brand_status:
             return
         self.find_element(position_expression=self.brand_edit_status()).click()
-    def enter_brand_logo(self, brand_logo):
-        '''
-        输入品牌logo
-        :param brand_logo:
-        :return:
-        '''
-        try:
-            WebDriverWait(self.driver, 1).until(
-                EC.any_of(EC.visibility_of_element_located((By.XPATH, self.brand_edit_logo_cls()))))
-            a = 1
-        except:
-            a = 0
+    # def enter_brand_logo(self, brand_logo):
+    #     '''
+    #     输入品牌logo
+    #     :param brand_logo:
+    #     :return:
+    #     '''
+    #     try:
+    #         WebDriverWait(self.driver, 1).until(
+    #             EC.any_of(EC.visibility_of_element_located((By.XPATH, self.brand_edit_logo_cls()))))
+    #         a = 1
+    #     except:
+    #         a = 0
+    #
+    #     if not brand_logo:
+    #         if a == 1:
+    #             self.find_element(position_expression=self.brand_edit_logo_cls()).click()
+    #             operate = self.find_element(position_expression=self.brand_edit_logo_cls())
+    #             operate.send_keys(Keys.BACKSPACE)
+    #             return
+    #         return
+    #     if a == 1:
+    #         self.find_element(position_expression=self.brand_edit_logo_cls()).click()
+    #         operate = self.find_element(position_expression=self.brand_edit_logo_cls())
+    #         operate.send_keys(Keys.BACKSPACE)
+    #     self.find_element(position_expression=self.brand_edit_logo()).click()
+    #     self.find_element(position_expression=self.brand_edit_logo_upload_button()).send_keys(brand_logo)
+    #     self.find_element(position_expression=self.brand_edit_logo_choose()).click()
+    #     logo_link = self.find_element(position_expression=self.brand_edit_logo_choose()).get_attribute('src')
+    #     self.find_element(position_expression=self.brand_edit_logo_fix_button()).click()
+    #     return logo_link
+    def enter_brand_logo(self,brand_logo):
+        ComponentPage.image_component(self, "logo", brand_logo)
+        return
+    def enter_brand_main_img(self,brand_main_img):
+        ComponentPage.image_component(self, "主图", brand_main_img)
+        return
 
-        if not brand_logo:
-            if a == 1:
-                self.find_element(position_expression=self.brand_edit_logo_cls()).click()
-                operate = self.find_element(position_expression=self.brand_edit_logo_cls())
-                operate.send_keys(Keys.BACKSPACE)
-                return
-            return
-        if a == 1:
-            self.find_element(position_expression=self.brand_edit_logo_cls()).click()
-            operate = self.find_element(position_expression=self.brand_edit_logo_cls())
-            operate.send_keys(Keys.BACKSPACE)
-        self.find_element(position_expression=self.brand_edit_logo()).click()
-        self.find_element(position_expression=self.brand_edit_logo_upload_button()).send_keys(brand_logo)
-        self.find_element(position_expression=self.brand_edit_logo_choose()).click()
-        logo_link = self.find_element(position_expression=self.brand_edit_logo_choose()).get_attribute('src')
-        self.find_element(position_expression=self.brand_edit_logo_fix_button()).click()
-        return logo_link
-
-    def enter_brand_main_img(self, brand_main_img):
-        '''
-        输入品牌主图
-        :param brand_main_img:
-        :return:
-        '''
-        try:
-            WebDriverWait(self.driver, 1).until(
-                EC.any_of(EC.visibility_of_element_located((By.XPATH, self.brand_edit_main_img_cls()))))
-            a = 1
-        except:
-            a = 0
-        if not brand_main_img:
-            if a == 1:
-                self.find_element(position_expression=self.brand_edit_main_img_cls()).click()
-                operate = self.find_element(position_expression=self.brand_edit_main_img_cls())
-                operate.send_keys(Keys.BACKSPACE)
-                # print("元素可见")
-                return
-            return
-        if a == 1:
-            self.find_element(position_expression=self.brand_edit_main_img_cls()).click()
-            operate = self.find_element(position_expression=self.brand_edit_main_img_cls())
-            operate.send_keys(Keys.BACKSPACE)
-        self.find_element(position_expression=self.brand_edit_main_img()).click()
-        self.find_element(position_expression=self.brand_edit_main_img_upload_button()).send_keys(
-            brand_main_img)
-        self.find_element(position_expression=self.brand_edit_main_img_choose()).click()
-        main_img_link = self.find_element(position_expression=self.brand_edit_main_img_choose()).get_attribute(
-            'src')
-        self.find_element(position_expression=self.brand_edit_main_img_fix_button()).click()
-        return main_img_link
+    # def enter_brand_main_img(self, brand_main_img):
+    #     '''
+    #     输入品牌主图
+    #     :param brand_main_img:
+    #     :return:
+    #     '''
+    #     try:
+    #         WebDriverWait(self.driver, 1).until(
+    #             EC.any_of(EC.visibility_of_element_located((By.XPATH, self.brand_edit_main_img_cls()))))
+    #         a = 1
+    #     except:
+    #         a = 0
+    #     if not brand_main_img:
+    #         if a == 1:
+    #             self.find_element(position_expression=self.brand_edit_main_img_cls()).click()
+    #             operate = self.find_element(position_expression=self.brand_edit_main_img_cls())
+    #             operate.send_keys(Keys.BACKSPACE)
+    #             # print("元素可见")
+    #             return
+    #         return
+    #     if a == 1:
+    #         self.find_element(position_expression=self.brand_edit_main_img_cls()).click()
+    #         operate = self.find_element(position_expression=self.brand_edit_main_img_cls())
+    #         operate.send_keys(Keys.BACKSPACE)
+    #     self.find_element(position_expression=self.brand_edit_main_img()).click()
+    #     self.find_element(position_expression=self.brand_edit_main_img_upload_button()).send_keys(
+    #         brand_main_img)
+    #     self.find_element(position_expression=self.brand_edit_main_img_choose()).click()
+    #     main_img_link = self.find_element(position_expression=self.brand_edit_main_img_choose()).get_attribute(
+    #         'src')
+    #     self.find_element(position_expression=self.brand_edit_main_img_fix_button()).click()
+    #     return main_img_link
 
     def enter_brand_main_categories(self,main_categories):
         '''
@@ -280,7 +288,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         self.find_element(position_expression=self.brand_edit_remark()).send_keys(Keys.CONTROL + "a")
         self.find_element(position_expression=self.brand_edit_remark()).clear()
         self.find_element(position_expression=self.brand_edit_remark()).send_keys(remark)
-    def click_brand_save_button(self,data,logo,main_img):
+    def click_brand_save_button(self,data):
         '''
         新增页面点击保存按钮
         :return:
@@ -304,14 +312,14 @@ class BrandPositionPage(BasePage, BrandPosition):
         if isinstance(ret, bool):
             # 添加你的额外判断条件
             # return "创建成功"
-            result = self.brand_is_page_in_expected_state(data,logo,main_img)  # 自定义的判断函数
+            result = self.brand_is_page_in_expected_state(data)  # 自定义的判断函数
             if result == "符合预期":
                 return "添加品牌成功"
             else:
                 return f"页面状态不符合预期: {result}"
         else:
             return ret.text
-    def click_edit_button(self,data,number,logo,main_img):
+    def click_edit_button(self,data,number):
         """
         保存
         编辑供应商
@@ -340,7 +348,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         if isinstance(ret, bool):
             # 添加你的额外判断条件
             # return "创建成功"
-            result = self.brand_is_page_in_expected_state(data,logo,main_img)
+            result = self.brand_is_page_in_expected_state(data)
             if result == "符合预期":
                 return "修改完成"
             else:
@@ -362,7 +370,7 @@ class BrandPositionPage(BasePage, BrandPosition):
         serial_number = self.find_element(position_expression=self.brand_list_id()).text
 
         return serial_number
-    def brand_is_page_in_expected_state(self,brand_data,logo,main_img):
+    def brand_is_page_in_expected_state(self,brand_data):
         '''
         页面断言
         :param data:
@@ -378,12 +386,12 @@ class BrandPositionPage(BasePage, BrandPosition):
                         f"查找 'name' 不存在. 预期: {brand_data['brand_name']}, 实际: {list[0]}")
             if 'brand_logo' in brand_data and brand_data['brand_logo']:
                 # print(2)
-                if logo != list[1]:
+                if brand_data['brand_logo'] != list[1]:
                     failed_assertions.append(
                         f"查找 'logo' 不存在. 预期: {logo}, 实际: {logo}")
             if 'brand_main_img' in brand_data and brand_data['brand_main_img']:
                 # print(3)
-                if main_img != list[2]:
+                if brand_data['brand_main_img'] != list[2]:
                     failed_assertions.append(
                         f"查找 'main_img' 不存在. 预期: {main_img}, 实际: {main_img}")
             if 'affiliated_company' in brand_data and brand_data['affiliated_company']:

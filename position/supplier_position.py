@@ -6,7 +6,9 @@ class SupplierPosition(object):
         :return:
         """
         return f"//label[text()='供应商名称']/parent::div//input"
+    def nm(cls):
 
+        return f'''//*[@id="app"]/div/section/main/div/section/button/span'''
     @classmethod
     def type(cls):
         """
