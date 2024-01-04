@@ -407,3 +407,10 @@ class BrandPositionPage(BasePage, BrandPosition):
                 return "符合预期"
         except AssertionError as e:
             return str(e)
+
+
+if __name__ == '__main__':
+    from common.data import case_data
+    case_data("brand_case.xlsx", "add_brand")
+    a = case_data("brand_case.xlsx", "edit_brand")
+    print(a[0]["操作"]["brand_name"])
