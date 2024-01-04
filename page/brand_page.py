@@ -411,6 +411,7 @@ class BrandPositionPage(BasePage, BrandPosition):
 
 if __name__ == '__main__':
     from common.data import case_data
-    case_data("brand_case.xlsx", "add_brand")
+    case_data("brand_case.xlsx", "edit_brand")
     a = case_data("brand_case.xlsx", "edit_brand")
-    print(a[0]["操作"]["brand_name"])
+    print(a[0])
+

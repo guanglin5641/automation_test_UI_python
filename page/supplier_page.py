@@ -289,12 +289,12 @@ class SupplierPage(BasePage, SupplierPosition):
             failed_assertions = []
 
             if 'name' in data and data['name']:
-                print(111)
+                # print(111)
                 if data['name'] != list[0]:
                     failed_assertions.append(
                         f"查找 'name' 不存在. 预期: {data['name']}, 实际: {list[0]}")
             if 'type' in data and data['type']:
-                print(111)
+                # print(111)
                 if data['type'] != list[1]:
                     failed_assertions.append(
                         f" 'super_type' 不存在. 预期: {data['super_type']}, 实际: {list[1]}")
@@ -317,11 +317,11 @@ class SupplierPage(BasePage, SupplierPosition):
                 if data['company_info']['contact_content'] != contact_content:
                     failed_assertions.append(
                         f"查找 'contact_information' 不存在. 预期: {data['company_info']['contact_content']}, 实际: {list[4]}")
-            if 'status' in data and data['status'] != None:
+            if 'status' in data and data['status']:
                 if data['status'] != list[5]:
                     failed_assertions.append(
                         f"查找 'state' 不存在. 预期: {data['status']}, 实际: {list[5]}")
-            if 'remark' in data and data['remark'] != None:
+            if 'remark' in data and data['remark']:
                 if data['remark'] != list[8]:
                     failed_assertions.append(
                         f"查找 'remark' 不存在. 预期: {data['remark']}, 实际: {list[8]}")
