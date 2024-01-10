@@ -13,20 +13,19 @@ import json
 class ComponentPage(BasePage,object):
     def __init__(self, driver, path=BRAND_LIST):
         super().__init__(driver, path)
-    def image_component(self, main,brand_logo):
+    def image_component(self, input_box_element,brand_logo):
         '''
         图片选择组件
         :param main:
         :param brand_logo:
         :return:
         '''
-        thumbnail_main_path = f"//div[text()='{main}']/parent::div"
         popups_main_path = f"(//div[@class='el-dialog'])[last()]"
         popups_link = popups_main_path + f"//input[@placeholder='输入图片链接后按回车键直接添加']"
         popups_choose = f"({popups_main_path}//div[@class='el-image'])[1]"
         popups_determine = f"({popups_main_path}//button)[last()]"
-        thumbnail_check = thumbnail_main_path + '//li[1]'
-        thumbnail_open = thumbnail_main_path + "//div[@class='yun-img-loader__pmask']"
+        thumbnail_check = input_box_element + '//li[1]'
+        thumbnail_open = input_box_element + "//div[@class='yun-img-loader__pmask']"
         try:
             WebDriverWait(self.driver, 1).until(
                 EC.any_of(EC.visibility_of_element_located((By.XPATH, thumbnail_check))))
@@ -53,37 +52,35 @@ class ComponentPage(BasePage,object):
         self.find_element(position_expression=popups_choose).click()
         self.find_element(position_expression=popups_determine).click()
         return
-    def category_component(self, category):
+    def category_component(self,input_box_element,main_category):
         '''
-        分类选择组件
+        分类类目组件
         :param category:
         :return:
         '''
-        main_path = f"//div[text()='{category}']/parent::div"
+        main_path = f"//div[@class='el-popper is-pure is-light el-dropdown__popper cate-panel-poper']"
+        one_path = f"{main_path}//section//section[1]//li/p"
+        two_path = f"{main_path}//section//section[2]//li/p"
+        three_path = f"{main_path}//section//section[3]//li/p"
+        four_path = f"{main_path}//section//section[4]//li/p"
+        self.find_element(position_expression=input_box_element).click()
+        one_len = (self.find_elements(position_expression=one_path))
+
+        for i in one_len:
+            if i.text == main_category[0]:
+                i.click()
+                two_len = (self.find_elements(position_expression=two_path))
+                for j in two_len:
+                    if j.text == main_category[1]:
+                        j.click()
+                        three_len = (self.find_elements(position_expression=three_path))
+                        for k in three_len:
+                            if k.text == main_category[2]:
+                                k.click()
+                                four_len = (self.find_elements(position_expression=four_path))
+                                for l in four_len:
+                                    if l.text == main_category[3]:
+                                        l.click()
         return
-
-    # def click_add_brand(self):
-    #     '''
-    #     列表页点击之后跳转到新增页面
-    #     :return:
-    #     '''
-    #     self.find_element(position_expression=self.brand_banner_add_button()).click()
-    # def number (self):
-    #     '''
-    #     获取供应商编号
-    #     :return:
-    #     '''
-    #     serial_number = self.find_element(position_expression=self.brand_list_id()).text
-    #
-    #     return serial_number
-    # def click_edit_brand(self):
-    #     '''
-    #     列表页点击之后跳转到编辑页面
-    #     :return:
-    #     '''
-    #
-    #     self.find_element(position_expression=self.brand_list_edit_button()).click()
-
-
 
 
