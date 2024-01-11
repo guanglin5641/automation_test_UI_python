@@ -81,6 +81,9 @@ class ComponentPage(BasePage,object):
                                 for l in four_len:
                                     if l.text == main_category[3]:
                                         l.click()
+                                break
+                        break
+
         return
 
 

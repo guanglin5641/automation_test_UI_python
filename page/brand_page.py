@@ -388,12 +388,12 @@ class BrandPositionPage(ComponentPage, BrandPosition, BasePage):
                 # print(2)
                 if brand_data['brand_logo'] != list[1]:
                     failed_assertions.append(
-                        f"查找 'logo' 不存在. 预期: {logo}, 实际: {logo}")
+                        f"查找 'logo' 不存在. 预期: {brand_data['brand_logo']}, 实际: {list[1]}")
             if 'brand_main_img' in brand_data and brand_data['brand_main_img']:
                 # print(3)
                 if brand_data['brand_main_img'] != list[2]:
                     failed_assertions.append(
-                        f"查找 'main_img' 不存在. 预期: {main_img}, 实际: {main_img}")
+                        f"查找 'main_img' 不存在. 预期: {brand_data['brand_main_img']}, 实际: {list[2]}")
             if 'affiliated_company' in brand_data and brand_data['affiliated_company']:
                 # print(4)
                 if brand_data['affiliated_company'] != list[3]:

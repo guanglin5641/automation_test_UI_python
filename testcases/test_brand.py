@@ -28,8 +28,8 @@ class TestBrand(Base):
         with allure.step(brand["测试标题"]):
             page.enter_brand_name(brand["操作"]["brand_name"])
             page.enter_brand_status(brand["操作"]["brand_status"])
-            logo_link = page.enter_brand_logo(brand["操作"]["brand_logo"])
-            main_img_link = page.enter_brand_main_img(brand["操作"]["brand_main_img"])
+            page.enter_brand_logo(brand["操作"]["brand_logo"])
+            page.enter_brand_main_img(brand["操作"]["brand_main_img"])
             page.enter_brand_main_categories(brand["操作"]["main_categories"])
             page.enter_brand_alias(brand["操作"]["alias"])
             page.enter_brand_english_name(brand["操作"]["english_name"])
@@ -44,7 +44,7 @@ class TestBrand(Base):
                 ret = page.click_brand_save_button(brand["操作"],)
             with allure.step("断言"):
                 assert ret == brand["预期结果"]
-                # assert ret == brand["expected_outcome"]
+
 
     @allure.epic("品牌理")
     @allure.title("编辑品牌")
