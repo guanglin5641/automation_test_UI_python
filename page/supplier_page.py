@@ -132,30 +132,48 @@ class SupplierPage(BasePage, SupplierPosition):
         for i in get_list:
             resource_type_lists.append(i.text)
         return (resource_type_lists)
+
     def select_resource_type(self, name):
         """
         选择资源类型
-        :param name:
-        :return:
-        """
-        all_list = self.get_resource_type_lists()
-        all_dict = {item: index + 1 for index, item in enumerate(all_list)}
-        for i, d_item in enumerate(all_list):
 
-            self.find_element(position_expression=self.resource_type(d_item,all_dict)).click()
+        :param name: 要选择的资源类型名称，可以是单个字符串或字符串列表
+        :return: None
+        """
+        # 获取所有资源类型列表
+        all_list = self.get_resource_type_lists()
+
+        # 将资源类型列表转换成字典，便于后续使用索引
+        all_dict = {item: index + 1 for index, item in enumerate(all_list)}
+
+        # 遍历所有资源类型
+        for i, d_item in enumerate(all_list):
+            # 点击每个资源类型的元素
+            self.find_element(position_expression=self.resource_type(d_item, all_dict)).click()
+
+        # 获取当前已选中的资源类型元素列表
         elements = self.find_elements(position_expression=self.selected_resource_type())
+
+        # 获取已选中的资源类型元素数量
         ele_len = len(elements)
+
+        # 如果传入的资源类型为空，则取消已选中的所有资源类型
         if not name:
             if elements:
                 for element in range(ele_len):
                     elements[element].click()
         else:
+            # 如果传入的资源类型不为空，则取消已选中的所有资源类型并重新选择
             if elements:
                 for element in range(ele_len):
                     elements[element].click()
 
+            # 遍历要选择的资源类型名称列表
             for i, item in enumerate(name):
-                self.find_element(position_expression=self.resource_type(item,all_dict)).click()
+                # 点击每个要选择的资源类型的元素
+                self.find_element(position_expression=self.resource_type(item, all_dict)).click()
+
+
     def input_balance_warning(self, balance):
         """
         输入余额预警

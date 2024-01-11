@@ -108,10 +108,11 @@ class BrandPositionPage(ComponentPage, BrandPosition, BasePage):
     #     self.find_element(position_expression=self.brand_edit_logo_fix_button()).click()
     #     return logo_link
     def enter_brand_logo(self,brand_logo):
-        ComponentPage.image_component(self, "logo", brand_logo)
+
+        self.image_component(self.brand_edit_logo_cls(),brand_logo)
         return
     def enter_brand_main_img(self,brand_main_img):
-        ComponentPage.image_component(self, "主图", brand_main_img)
+        self.image_component(self.brand_edit_main_img_cls(),brand_main_img)
         return
 
     # def enter_brand_main_img(self, brand_main_img):
@@ -146,19 +147,28 @@ class BrandPositionPage(ComponentPage, BrandPosition, BasePage):
     #         'src')
     #     self.find_element(position_expression=self.brand_edit_main_img_fix_button()).click()
     #     return main_img_link
-
     def enter_brand_main_categories(self,main_categories):
         '''
-        输入品牌主分类
+        主营类目
         :param main_categories:
         :return:
         '''
         if not main_categories:
-
             return
-        self.find_element(position_expression=self.brand_edit_main_categories()).click()
-        self.scroll_page(position_expression=self.brand_edit_alias())
-        self.find_element(position_expression=self.brand_edit_main_categories_select_box_one_click()).click()
+        self.category_component(self.brand_edit_main_categories(),main_categories)
+
+    # def enter_brand_main_categories(self,main_categories):
+    #     '''
+    #     输入品牌主分类
+    #     :param main_categories:
+    #     :return:
+    #     '''
+    #     if not main_categories:
+    #
+    #         return
+    #     self.find_element(position_expression=self.brand_edit_main_categories()).click()
+    #     self.scroll_page(position_expression=self.brand_edit_alias())
+    #     self.find_element(position_expression=self.brand_edit_main_categories_select_box_one_click()).click()
 
     def enter_brand_alias(self,alias):
         '''
@@ -417,9 +427,6 @@ class BrandPositionPage(ComponentPage, BrandPosition, BasePage):
             return str(e)
 
 
-if __name__ == '__main__':
-    from common.data import case_data
-    case_data("brand_case.xlsx", "edit_brand")
-    a = case_data("brand_case.xlsx", "edit_brand")
-    print(a[0])
+
+
 

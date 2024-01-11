@@ -84,14 +84,14 @@ class BrandPosition(object):
         '''
         return f"//tr[@class='el-table__row'][1]//td[7]//div[@class='cell']"
     @classmethod
-    def brand_list_edit_button(self):
+    def brand_list_edit_button(cls):
         '''
         列表编辑按钮
         :return:
         '''
         return f"//tr[@class='el-table__row'][1]//td[8]//button[1]"
     @classmethod
-    def brand_list_delete_button(self):
+    def brand_list_delete_button(cls):
         '''
         列表删除按钮
         :return:
@@ -112,89 +112,82 @@ class BrandPosition(object):
         :return:
         '''
         return f"//label[text()='状态']/parent::div//div[@class='el-switch__inner']"
-    def brand_edit_status_text(self):
+    def brand_edit_status_text(cls):
         '''
         编辑品牌状态文案
         :return:
         '''
         return f"//label[text()='状态']/parent::div//span[@class='is-text']"
     @classmethod
-    def brand_edit_logo(cls):
+    # def brand_edit_logo(cls):
+    #     '''
+    #     编辑品牌logo
+    #     :return:
+    #     '''
+    #     return f"//div[text()='logo']/parent::div//div[@class='yun-img-loader__in']"
+    #
+    # def brand_edit_logo_upload_button(cls):
+    #     '''
+    #     编辑品牌logo上传按钮
+    #     :return:
+    #     '''
+    #     return f"//div[@class='el-overlay yun-img-loader__pop'][1]//div[@class='el-scrollbar__view']//input[@class='el-upload__input']"
+    # def brand_edit_logo_choose(cls):
+    #     '''
+    #     编辑品牌logo选择图片
+    #     :return:
+    #     '''''
+    #     return f"//div[@class='el-overlay yun-img-loader__pop'][1]//div[@class='el-scrollbar__view'][1]//div[@class='el-image']//img"
+    # def brand_edit_logo_fix_button(cls):
+    #     '''
+    #     编辑品牌logo确定按钮
+    #     :return:
+    #     '''
+    #     return f"//div[@class='el-overlay yun-img-loader__pop'][1]//span[text()='确定']/parent::button"
+    def brand_edit_logo_cls(cls):
         '''
-        编辑品牌logo
+        编辑logo检查
         :return:
         '''
-        return f"//div[text()='logo']/parent::div//div[@class='yun-img-loader__in']"
-
-    def brand_edit_logo_upload_button(self):
-        '''
-        编辑品牌logo上传按钮
-        :return:
-        '''
-        return f"//div[@class='el-overlay yun-img-loader__pop'][1]//div[@class='el-scrollbar__view']//input[@class='el-upload__input']"
-    def brand_edit_logo_choose(self):
-        '''
-        编辑品牌logo选择图片
-        :return: 
-        '''''
-        return f"//div[@class='el-overlay yun-img-loader__pop'][1]//div[@class='el-scrollbar__view'][1]//div[@class='el-image']//img"
-    def brand_edit_logo_fix_button(self):
-        '''
-        编辑品牌logo确定按钮
-        :return:
-        '''
-        return f"//div[@class='el-overlay yun-img-loader__pop'][1]//span[text()='确定']/parent::button"
-    def brand_edit_logo_cls(self):
+        return "//div[text()='logo']/parent::div"
+    # @classmethod
+    # def brand_edit_main_img(cls):
+    #     '''
+    #     编辑品牌主图
+    #     :return:
+    #     '''
+    #     return f"//div[text()='主图']/parent::div//div[@class='yun-img-loader__in']"
+    # def brand_edit_main_img_upload_button(cls):
+    #     '''
+    #     编辑品牌主图上传按钮
+    #     :return:
+    #     '''
+    #     return f"//div[@class='el-overlay yun-img-loader__pop'][2]//div[@class='el-scrollbar__view']//input[@class='el-upload__input']"
+    # def brand_edit_main_img_choose(cls):
+    #     '''
+    #     编辑品牌主图选择图片
+    #     :return:
+    #     '''
+    #     return f"//div[@class='el-overlay yun-img-loader__pop'][2]//div[@class='el-scrollbar__view'][1]//div[@class='el-image']//img"
+    # def brand_edit_main_img_fix_button(cls):
+    #     '''
+    #     编辑品牌主图确定按钮
+    #     :return:
+    #     '''
+    #     return f"//div[@class='el-overlay yun-img-loader__pop'][2]//span[text()='确定']/parent::button"
+    def brand_edit_main_img_cls(cls):
         '''
         编辑logo清除
         :return:
         '''
-        return f"//div[text()='logo']/parent::div//li"
-    @classmethod
-    def brand_edit_main_img(cls):
-        '''
-        编辑品牌主图
-        :return:
-        '''
-        return f"//div[text()='主图']/parent::div//div[@class='yun-img-loader__in']"
-    def brand_edit_main_img_upload_button(self):
-        '''
-        编辑品牌主图上传按钮
-        :return:
-        '''
-        return f"//div[@class='el-overlay yun-img-loader__pop'][2]//div[@class='el-scrollbar__view']//input[@class='el-upload__input']"
-    def brand_edit_main_img_choose(self):
-        '''
-        编辑品牌主图选择图片
-        :return:
-        '''
-        return f"//div[@class='el-overlay yun-img-loader__pop'][2]//div[@class='el-scrollbar__view'][1]//div[@class='el-image']//img"
-    def brand_edit_main_img_fix_button(self):
-        '''
-        编辑品牌主图确定按钮
-        :return:
-        '''
-        return f"//div[@class='el-overlay yun-img-loader__pop'][2]//span[text()='确定']/parent::button"
-    def brand_edit_main_img_cls(self):
-        '''
-        编辑logo清除
-        :return:
-        '''
-        return f"//div[text()='主图']/parent::div//li"
+        return "//div[text()='主图']/parent::div"
     @classmethod
     def brand_edit_main_categories(cls):
         '''
         编辑品牌主营类目
         :return:
         '''
-        return f"//label[text()='主营类目']/parent::div//div[@class='el-dropdown w-full']"
-    @classmethod
-    def brand_edit_main_categories_select_box_one_click(cls):
-        '''
-        编辑品牌主营类目选择框
-        :return:
-        '''
-        return f"//div[@class='el-scrollbar__view el-dropdown__list']//p[text()='一级类目']/parent::section//li[1]//span[@class='el-tag el-tag--small el-tag--light']"
+        return "//label[text()='主营类目']/parent::div//div[@class='el-dropdown w-full']"
     @classmethod
     def brand_edit_alias(cls):
         '''
@@ -279,4 +272,7 @@ class BrandPosition(object):
         编辑品牌取消按钮
         :return:
         '''
-        return f"//span[text()='取消']/parent::button"
+        return "//span[text()='取消']/parent::button"
+
+
+

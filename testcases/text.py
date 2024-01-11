@@ -1,36 +1,62 @@
 import time
-
-import pytest
 from common.data import case_data
+import pytest
 from common.path import GetPath
 from testcases.base import Base
 from page.login_page import LoginPage
-from page.supplier_page import SupplierPage
+# from page.brand_page import BrandPositionPage
 import allure
 from common.tool import add_image_attach
-add_case = case_data("supplier_case.xlsx", "add_supplier")
-edit_case = case_data("supplier_case.xlsx","edit_supplier")
+import time
+from selenium.common.exceptions import NoSuchElementException
+from page.base_page import BasePage
+from position.brand_position import BrandPosition
+from common.route import BRAND_LIST, WAREHOUSE_PRODUCTS_LIST
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import re
+import json
 
-class TestSupplier(Base):
-    @staticmethod
-    def fill_supplier_form(page, supplier):
-        #添加表单信息
-        page.input_name(supplier["name"])
-        page.select_type("type")
-    @allure.epic("供应商管理")
-    @allure.title("添加供应商")
-    @pytest.mark.parametrize("supplier", add_case)
-    def test_add_supplier(self, driver, supplier):
+
+from page.component_page import ComponentPage
+class BrandPositionPage(ComponentPage, BrandPosition, BasePage):
+    def __init__(self, driver, path=WAREHOUSE_PRODUCTS_LIST):
+        super().__init__(driver, path)
+
+    def enter_brand_logo(self, brand_logo):
+        self.image_components("//div[text()='商品组图']/parent::div", brand_logo)
+        return
+    def click_edit_brand(self):
+        self.find_element(position_expression="(//span[text()='编辑'])[1]").click()
+        return
+    def enter_brand_name(self):
+        self.find_element(position_expression="//span[text()='下一步']").click()
+        return
+
+get_path = GetPath()
+text = [
+    {
+        "title": "添加品牌",
+    }
+]
+
+
+
+class TestBrand(Base):
+    @allure.epic("品牌理")
+    @allure.title("编辑品牌")
+    @pytest.mark.parametrize("brand", text)
+    def test_edit_supplier(self, driver, brand):
         with allure.step("登录"):
             LoginPage(driver).login_success()
             add_image_attach(driver, "登录")
-        with allure.step("进入供应商列表页"):
-            page = SupplierPage(driver)
-        with allure.step(supplier["前置条件"]):
-            page.click_to_add_page()
-        with allure.step(supplier["测试标题"]):
-            self.fill_supplier_form(page, supplier["操作"])
-            with allure.step("点击添加按钮"):
-                res = page.click_add_button(supplier["操作"])
-            with allure.step("断言"):
-                assert res == supplier["预期结果"]
+        with allure.step("进入列表页"):
+            page = BrandPositionPage(driver)
+            # numbers = page.number()
+        with allure.step(""):
+            page.click_edit_brand()
+        with allure.step("11"):
+            page.enter_brand_name()
+            page.enter_brand_logo(["https://img.dac6.cn/warehouse/23900fe6e463f1c0af65d8b238b95bef.png","https://img.dac6.cn/warehouse/23900fe6e463f1c0af65d8b238b95bef.png","https://img.dac6.cn/warehouse/23900fe6e463f1c0af65d8b238b95bef.png"])
