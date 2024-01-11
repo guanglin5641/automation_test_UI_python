@@ -26,7 +26,7 @@ class BrandPositionPage(ComponentPage, BrandPosition, BasePage):
         super().__init__(driver, path)
 
     def enter_brand_logo(self, brand_logo):
-        self.image_components("//div[text()='商品组图']/parent::div", brand_logo)
+        self.category_component(brand_logo)
         return
     def click_edit_brand(self):
         self.find_element(position_expression="(//span[text()='编辑'])[1]").click()
@@ -59,4 +59,4 @@ class TestBrand(Base):
             page.click_edit_brand()
         with allure.step("11"):
             page.enter_brand_name()
-            page.enter_brand_logo(["https://img.dac6.cn/warehouse/23900fe6e463f1c0af65d8b238b95bef.png","https://img.dac6.cn/warehouse/23900fe6e463f1c0af65d8b238b95bef.png","https://img.dac6.cn/warehouse/23900fe6e463f1c0af65d8b238b95bef.png"])
+            page.enter_brand_logo(["实物-1","哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"])
