@@ -59,4 +59,4 @@ class TestBrand(Base):
             page.click_edit_brand()
         with allure.step("11"):
             # page.enter_brand_name()
-            page.enter_brand_logo(["实物-1",""])
+            page.enter_brand_logo(["实物-1","哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"])

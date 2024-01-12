@@ -98,32 +98,21 @@ class ComponentPage(BasePage, object):
             self.find_element(position_expression=popups_determine).click()
         return
     def category_component(self, input_box_element, main_category):
-        main_path = "//div[@class='el-popper is-pure is-light el-dropdown__popper cate-panel-poper']"
+        '''
+        分类类目组件
+        :param category:
+        :return:
+        '''
+        main_path = f"//div[@class='el-popper is-pure is-light el-dropdown__popper cate-panel-poper']"
+        path = []
+        for i in range(len(main_category)):
+            path.append(f"{main_path}//section//section[{i+1}]//li/p")
         self.find_element(position_expression=input_box_element).click()
+        for i in range(len(path)):
 
-        current_element = None
-
-        for category in main_category:
-            if current_element is not None:
-                current_element.click()
-
-            current_element = self.find_element(
-                position_expression=f"{main_path}//section//section//li/p[text()='{category}']")
-            if current_element is None:
-                break
-
-        if current_element is not None:
-            current_element.click()
-
-            # 添加下面的部分
-            for sub_category in main_category[1:]:
-                sub_element = self.find_element(
-                    position_expression=f"{main_path}//section//section//li/p[text()='{sub_category}']")
-                if sub_element is not None:
-                    sub_element.click()
-                    current_element = sub_element
+            one_len = (self.find_elements(position_expression=f"{main_path}//section//section[{i+1}]//li/p"))
+            for y in one_len:
+                if y.text == main_category[i]:
+                    y.click()
                 else:
                     break
-        return
-
-
