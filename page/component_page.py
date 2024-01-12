@@ -98,37 +98,32 @@ class ComponentPage(BasePage, object):
             self.find_element(position_expression=popups_determine).click()
         return
     def category_component(self, input_box_element, main_category):
-        '''
-        分类类目组件
-        :param category:
-        :return:
-        '''
-        main_path = f"//div[@class='el-popper is-pure is-light el-dropdown__popper cate-panel-poper']"
-        one_path = f"{main_path}//section//section[1]//li/p"
-        two_path = f"{main_path}//section//section[2]//li/p"
-        three_path = f"{main_path}//section//section[3]//li/p"
-        four_path = f"{main_path}//section//section[4]//li/p"
+        main_path = "//div[@class='el-popper is-pure is-light el-dropdown__popper cate-panel-poper']"
         self.find_element(position_expression=input_box_element).click()
-        one_len = (self.find_elements(position_expression=one_path))
 
-        for i in one_len:
-            if i.text == main_category[0]:
-                i.click()
-                two_len = (self.find_elements(position_expression=two_path))
-                for j in two_len:
-                    if j.text == main_category[1]:
-                        j.click()
-                        three_len = (self.find_elements(position_expression=three_path))
-                        for k in three_len:
-                            if k.text == main_category[2]:
-                                k.click()
-                                four_len = (self.find_elements(position_expression=four_path))
-                                for l in four_len:
-                                    if l.text == main_category[3]:
-                                        l.click()
-                                break
-                        break
+        current_element = None
+
+        for category in main_category:
+            if current_element is not None:
+                current_element.click()
+
+            current_element = self.find_element(
+                position_expression=f"{main_path}//section//section//li/p[text()='{category}']")
+            if current_element is None:
                 break
+
+        if current_element is not None:
+            current_element.click()
+
+            # 添加下面的部分
+            for sub_category in main_category[1:]:
+                sub_element = self.find_element(
+                    position_expression=f"{main_path}//section//section//li/p[text()='{sub_category}']")
+                if sub_element is not None:
+                    sub_element.click()
+                    current_element = sub_element
+                else:
+                    break
         return
 
 
