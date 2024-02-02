@@ -5,6 +5,8 @@ from testcases.base import Base
 import pytest
 import allure
 
+import os
+
 data = [
     {"username": "", "password": "", "expected": "必填"},
     {"username": "admin", "password": "111", "expected": "用户名或密码错误"},
@@ -34,3 +36,6 @@ class TestLogin(Base):
 
         with allure.step("登录 admin"):
             page.login_api_success()
+
+if __name__ == '__main__':
+    TestLogin()
