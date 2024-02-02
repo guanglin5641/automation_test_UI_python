@@ -119,62 +119,12 @@ class BrandPosition(object):
         '''
         return f"//label[text()='状态']/parent::div//span[@class='is-text']"
     @classmethod
-    # def brand_edit_logo(cls):
-    #     '''
-    #     编辑品牌logo
-    #     :return:
-    #     '''
-    #     return f"//div[text()='logo']/parent::div//div[@class='yun-img-loader__in']"
-    #
-    # def brand_edit_logo_upload_button(cls):
-    #     '''
-    #     编辑品牌logo上传按钮
-    #     :return:
-    #     '''
-    #     return f"//div[@class='el-overlay yun-img-loader__pop'][1]//div[@class='el-scrollbar__view']//input[@class='el-upload__input']"
-    # def brand_edit_logo_choose(cls):
-    #     '''
-    #     编辑品牌logo选择图片
-    #     :return:
-    #     '''''
-    #     return f"//div[@class='el-overlay yun-img-loader__pop'][1]//div[@class='el-scrollbar__view'][1]//div[@class='el-image']//img"
-    # def brand_edit_logo_fix_button(cls):
-    #     '''
-    #     编辑品牌logo确定按钮
-    #     :return:
-    #     '''
-    #     return f"//div[@class='el-overlay yun-img-loader__pop'][1]//span[text()='确定']/parent::button"
     def brand_edit_logo_cls(cls):
         '''
         编辑logo检查
         :return:
         '''
         return "//div[text()='logo']/parent::div"
-    # @classmethod
-    # def brand_edit_main_img(cls):
-    #     '''
-    #     编辑品牌主图
-    #     :return:
-    #     '''
-    #     return f"//div[text()='主图']/parent::div//div[@class='yun-img-loader__in']"
-    # def brand_edit_main_img_upload_button(cls):
-    #     '''
-    #     编辑品牌主图上传按钮
-    #     :return:
-    #     '''
-    #     return f"//div[@class='el-overlay yun-img-loader__pop'][2]//div[@class='el-scrollbar__view']//input[@class='el-upload__input']"
-    # def brand_edit_main_img_choose(cls):
-    #     '''
-    #     编辑品牌主图选择图片
-    #     :return:
-    #     '''
-    #     return f"//div[@class='el-overlay yun-img-loader__pop'][2]//div[@class='el-scrollbar__view'][1]//div[@class='el-image']//img"
-    # def brand_edit_main_img_fix_button(cls):
-    #     '''
-    #     编辑品牌主图确定按钮
-    #     :return:
-    #     '''
-    #     return f"//div[@class='el-overlay yun-img-loader__pop'][2]//span[text()='确定']/parent::button"
     def brand_edit_main_img_cls(cls):
         '''
         编辑logo清除

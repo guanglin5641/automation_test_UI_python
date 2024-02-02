@@ -1,11 +1,7 @@
-import time
-
 from page.ware_page.login_page import LoginPage
 from testcases.base import Base
 import pytest
 import allure
-
-import os
 
 data = [
     {"username": "", "password": "", "expected": "必填"},

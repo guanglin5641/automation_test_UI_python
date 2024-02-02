@@ -1,18 +1,23 @@
 import time
-from selenium.common.exceptions import NoSuchElementException
+
 from page.base_page import BasePage
 from position.ware_postion.supplier_position import SupplierPosition
 from common.route import SUPPLIER_LIST, SUPPLIER_SAVE
+from common.route import SUP_LONGIN
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import re
-import json
+from page.supplier_page.login_page import LoginPositionPage
+
 
 class SupplierPage(BasePage, SupplierPosition):
     def __init__(self, driver, path=SUPPLIER_LIST):
         super().__init__(driver, path)
+    # def sup_login(self):
+    #     self.sup_login_page = LoginPositionPage(self.driver)
+
     def click_to_add_page(self):
         """
         列表页点击之后跳转到新增页面
@@ -25,7 +30,7 @@ class SupplierPage(BasePage, SupplierPosition):
         :return:
         """
         self.find_element(position_expression=self.list_text_operation()).click()
-    def click_add_button(self,data):
+    def click_add_button(self,data,):
         """
         保存
         添加供应商
@@ -48,11 +53,19 @@ class SupplierPage(BasePage, SupplierPosition):
                 ),
             )
         )
+
         # 如果页面发生跳转，就说明创建供应商成功
         if isinstance(ret, bool):
             # 添加你的额外判断条件
             # return "创建成功"
             result = self.is_page_in_expected_state(data)  # 自定义的判断函数
+            sup_login = LoginPositionPage(self.driver)
+            sup_login.supplier_name = data["account"]
+            sup_login.supplier_pwd = data["password"]
+            login_result = sup_login.login_success()  # 调用 LoginPositionPage 中的 login_success
+
+            print(login_result)
+            time.sleep(100)
             if result == "符合预期":
                 return "创建成功"
             else:
@@ -211,6 +224,8 @@ class SupplierPage(BasePage, SupplierPosition):
         elif self.find_element(position_expression=self.password()) != None:
             self.find_element(position_expression=self.password()).clear()
         self.find_element(position_expression=self.password()).send_keys(password)
+
+
     def input_company_info(self, company_info):
         """
         输入公司信息
@@ -349,5 +364,10 @@ class SupplierPage(BasePage, SupplierPosition):
                 return "符合预期"
         except AssertionError as e:
             return str(e)
+
+
+if __name__ == '__main__':
+    aa = LoginPositionPage()
+    print(aa.login_success())
 
 

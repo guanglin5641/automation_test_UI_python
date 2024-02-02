@@ -1,4 +1,3 @@
-import time
 from common.data import case_data
 import pytest
 from common.path import GetPath
@@ -17,7 +16,7 @@ class TestBrand(Base):
     @allure.epic("品牌管理")
     @allure.title("添加品牌")
     @pytest.mark.parametrize("brand", add_case)
-    def test_add_supplier(self, driver, brand):
+    def test_add_brand(self, driver, brand):
         with allure.step("登录"):
             LoginPage(driver).login_success()
             add_image_attach(driver, "登录")
@@ -41,7 +40,7 @@ class TestBrand(Base):
             page.enter_brand_affiliated_company(brand["操作"]["affiliated_company"])
             page.enter_brand_remark(brand["操作"]["remark"])
             with allure.step("点击新增"):
-                ret = page.click_brand_save_button(brand["操作"],)
+                ret = page.click_brand_save_button(brand["操作"])
             with allure.step("断言"):
                 assert ret == brand["预期结果"]
 
@@ -49,7 +48,7 @@ class TestBrand(Base):
     @allure.epic("品牌理")
     @allure.title("编辑品牌")
     @pytest.mark.parametrize("brand", edit_case)
-    def test_edit_supplier(self, driver, brand):
+    def test_edit_brand(self, driver, brand):
         with allure.step("登录"):
             LoginPage(driver).login_success()
             add_image_attach(driver, "登录")
@@ -61,8 +60,8 @@ class TestBrand(Base):
         with allure.step(brand["测试标题"]):
             page.enter_brand_name(brand["操作"]["brand_name"])
             page.enter_brand_status(brand["操作"]["brand_status"])
-            logo_link = page.enter_brand_logo(brand["操作"]["brand_logo"])
-            main_img_link = page.enter_brand_main_img(brand["操作"]["brand_main_img"])
+            page.enter_brand_logo(brand["操作"]["brand_logo"])
+            page.enter_brand_main_img(brand["操作"]["brand_main_img"])
             page.enter_brand_main_categories(brand["操作"]["main_categories"])
             page.enter_brand_alias(brand["操作"]["alias"])
             page.enter_brand_english_name(brand["操作"]["english_name"])

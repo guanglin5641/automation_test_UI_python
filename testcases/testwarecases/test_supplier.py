@@ -2,10 +2,10 @@ import time
 
 import pytest
 from common.data import case_data
-from common.path import GetPath
 from testcases.base import Base
 from page.ware_page.login_page import LoginPage
-from page.supplier_page import SupplierPage
+from page.ware_page.supplier_page import SupplierPage
+from page.supplier_page.login_page import LoginPositionPage
 import allure
 from common.tool import add_image_attach
 add_case = case_data("supplier_case.xlsx", "add_supplier")
@@ -40,6 +40,7 @@ class TestSupplier(Base):
                 res = page.click_add_button(supplier["操作"])
             with allure.step("断言"):
                 assert res == supplier["预期结果"]
+                time.sleep(100)
     @allure.epic("供应商管理")
     @allure.title("编辑供应商")
     @pytest.mark.parametrize("supplier", edit_case)

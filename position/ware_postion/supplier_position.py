@@ -19,11 +19,10 @@ class SupplierPosition(object):
 
     @classmethod
     def resource_type(cls, text,all_list):
-
+        index = None
         if text in all_list:
             index = all_list[text]
         return f"//label[text()='资源类型']/following-sibling::div//label[{index}]"
-    @classmethod
     def selected_resource_type(self):
 
         return f"//div[@class='el-checkbox-group']//label[@class='el-checkbox is-checked']"
