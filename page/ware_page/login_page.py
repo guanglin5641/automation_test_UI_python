@@ -1,6 +1,8 @@
 import json
 import time
 
+from selenium.webdriver import ActionChains
+
 from position.ware_postion.login_position import LoginPosition
 from selenium.webdriver.common.by import By
 from page.base_page import BasePage
@@ -31,7 +33,7 @@ class LoginPage(BasePage, LoginPosition):
         self.logger.info(f"密码：{password}")
 
         resp = requests.post(
-            urljoin(conf.get_by_name("warehouse.api_host"), path),
+            urljoin(conf.get_by_name("api_host"), path),
             json={"account": username, "password": password},
         )
         self.logger.info(f"api 接口返回：{resp.text}")
@@ -53,7 +55,7 @@ class LoginPage(BasePage, LoginPosition):
         self.driver.execute_script(js)
 
         # 跳转到首页
-        self.driver.get(urljoin(conf.get_by_name("warehouse.host"), route.INDEX))
+        self.driver.get(urljoin(conf.get_by_name("host"), route.INDEX))
 
     def input_username_value(self, value):
         if not value:
@@ -70,10 +72,9 @@ class LoginPage(BasePage, LoginPosition):
         点击登录按钮
         :return:
         """
-        # xpath = self.button("登 录")
-        # action = ActionChains(self.driver)
-        # action.click(self.find_element(position_expression=xpath))
-        self.find_element(position_expression=self.button("登 录")).click()
+        xpath = self.button("登 录")
+        action = ActionChains(self.driver)
+        action.click(self.find_element(position_expression=xpath))
         wait = WebDriverWait(self.driver, 5)
         ret = wait.until(
             # 任何一个满足条件

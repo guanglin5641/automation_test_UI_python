@@ -1,3 +1,5 @@
+import time
+
 from page.base_page import BasePage
 from position.ware_postion.left_menu_position import LeftMenuPosition
 from common import route

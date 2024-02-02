@@ -1,3 +1,5 @@
+import time
+
 from page.ware_page.login_page import LoginPage
 from testcases.base import Base
 import pytest
@@ -32,6 +34,3 @@ class TestLogin(Base):
 
         with allure.step("登录 admin"):
             page.login_api_success()
-
-if __name__ == '__main__':
-    TestLogin()
