@@ -1,13 +1,21 @@
-2024-02-01 12:06:04,724 - log.py - log - <module>[:71] - INFO - 121
-2024-02-01 12:12:38,850 - test_brand.py - test_brand - test_add_supplier[:32] - INFO - brand_name
-2024-02-01 12:12:49,063 - test_brand.py - test_brand - test_add_supplier[:32] - INFO - brand_name
-2024-02-01 14:04:30,576 - log.py - log - <module>[:71] - INFO - 121
-2024-02-01 14:07:11,609 - log.py - log - <module>[:71] - INFO - 121
-2024-02-01 14:07:41,061 - log.py - log - <module>[:71] - INFO - æµ‹è¯•logs
-2024-02-01 14:13:24,852 - test_brand.py - test_brand - test_add_supplier[:46] - INFO - 11111
-2024-02-01 14:20:56,861 - log.py - log - <module>[:71] - WARNING - æµ‹è¯•logs
-2024-02-01 14:21:12,977 - log.py - log - <module>[:71] - INFO - æµ‹è¯•logs
-2024-02-01 14:21:34,873 - log.py - log - <module>[:71] - WARNING - æµ‹è¯•logs
-2024-02-01 14:56:01,618 - login_page.py - login_page - login_api_success[:25] - INFO - --- api ç™»å½• ---
-2024-02-01 14:56:01,619 - login_page.py - login_page - login_api_success[:28] - INFO - ç”¨æˆ·åï¼šadmin
-2024-02-01 14:56:01,620 - login_page.py - login_page - login_api_success[:31] - INFO - å¯†ç ï¼š123456
+2025-02-07 17:35:32,888 - base_page.py - base_page - __init__[:28] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-07 17:51:58,862 - base_page.py - base_page - __init__[:28] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-07 17:53:28,610 - base_page.py - base_page - __init__[:28] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-07 18:12:26,901 - base_page.py - base_page - __init__[:27] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-07 18:13:44,846 - base_page.py - base_page - __init__[:27] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-07 18:14:10,167 - base_page.py - base_page - __init__[:27] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-07 18:18:25,546 - base_page.py - base_page - __init__[:27] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-07 18:21:13,386 - base_page.py - base_page - __init__[:27] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-07 18:21:47,086 - base_page.py - base_page - __init__[:27] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-07 18:22:14,166 - base_page.py - base_page - __init__[:27] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-07 18:23:27,503 - base_page.py - base_page - __init__[:27] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-08 10:34:50,141 - base_page.py - base_page - __init__[:27] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-08 10:43:21,591 - base_page.py - base_page - __init__[:27] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-08 10:46:36,736 - base_page.py - base_page - __init__[:27] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-08 10:46:49,239 - base_page.py - base_page - __init__[:27] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-08 10:49:11,110 - base_page.py - base_page - __init__[:27] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-08 10:50:45,850 - base_page.py - base_page - __init__[:27] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-08 10:56:41,001 - base_page.py - base_page - __init__[:27] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-08 11:01:08,228 - base_page.py - base_page - __init__[:27] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-08 11:01:41,257 - base_page.py - base_page - __init__[:27] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login
+2025-02-08 11:02:05,128 - base_page.py - base_page - __init__[:27] - INFO - ´ò¿ªÁ¬½Ó: https://channel.test.daff5.cn/core/auth/login

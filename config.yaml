@@ -16,11 +16,5 @@ redis:
   port: 6379
   db: 0,
   password: ""
-warehouse:
-  host: https://test.wareadmin.biyingniao.com
-  api_host:  https://test.warehouse.biyingniao.com
-supplier:
-  host: https://supplier.test.biyingniao.com
-  api_host: https://test.warehouse.biyingniao.com
-  username: "test-account"
-  password: "password123"
+channel:
+  host: https://channel.test.daff5.cn
